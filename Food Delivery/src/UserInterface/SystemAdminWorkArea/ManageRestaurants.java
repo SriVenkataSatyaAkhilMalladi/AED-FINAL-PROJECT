@@ -130,7 +130,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
 
         btnRestrauntAdmin.setBackground(new java.awt.Color(0, 0, 0));
         btnRestrauntAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        btnRestrauntAdmin.setText("Restraunt registration");
+        btnRestrauntAdmin.setText("Restaurant Registration");
         btnRestrauntAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRestrauntAdminActionPerformed(evt);
