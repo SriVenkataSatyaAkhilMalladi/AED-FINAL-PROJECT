@@ -26,6 +26,10 @@ public class DeliveryMan {
         this.userName=UserName;
         orderList = new ArrayList<Order>();
     }
+
+    DeliveryMan() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
      public void addOrder(String restaurantName, String customerName, String deliverMan, ArrayList<Dishes> Order, String cost, String deliveryAddress) {
         Order order=new Order();

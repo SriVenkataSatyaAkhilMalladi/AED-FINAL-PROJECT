@@ -18,7 +18,7 @@ public class ConfigureASystem {
         
         EcoSystem system = EcoSystem.getInstance();
                 
-        Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
+        Employee employee = system.getEmployeeDirectory().createEmployee("SA");
         
         UserAccount ua = system.getUserAccountDirectory().createUserAccount
         ("SysAdmin","sysadmin", "sysadmin", employee, new SystemAdminRole());
