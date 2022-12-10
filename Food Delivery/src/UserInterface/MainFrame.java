@@ -4,8 +4,13 @@
  */
 package UserInterface;
 
+import Business.Customer.CustomerDirectory;
+import Business.DB4OUtil.DB4OUtil;
+import Business.DeliveryMan.DeliveryManDirectory;
 import Business.EcoSystem;
+import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import UserInterface.RestaurantAdminRole.AdminWorkAreaPanel;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -22,11 +27,21 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     
+    private UserAccount userAccount;
     private EcoSystem system;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    RestaurantDirectory restaurantDirectory; 
+    CustomerDirectory customerDirectory;
+    DeliveryManDirectory deliveryManDirectory;
+    
     public MainFrame() {
         initComponents();
+        system = dB4OUtil.retrieveSystem();
         setExtendedState(MainFrame.MAXIMIZED_BOTH);
         //this.setSize(1000, 650);
+        restaurantDirectory = new RestaurantDirectory();
+        customerDirectory = new CustomerDirectory();
+        deliveryManDirectory = new DeliveryManDirectory();
     }
 
     /**
@@ -47,8 +62,7 @@ public class MainFrame extends javax.swing.JFrame {
         Loginbtn = new javax.swing.JButton();
         Logoutbtn = new javax.swing.JButton();
         jRightPanel = new javax.swing.JPanel();
-        Headinglbl = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,35 +137,11 @@ public class MainFrame extends javax.swing.JFrame {
         jSplitPane.setLeftComponent(JLeftPanel);
 
         jRightPanel.setBackground(new java.awt.Color(255, 255, 153));
+        jRightPanel.setLayout(new java.awt.CardLayout());
 
-        Headinglbl.setFont(new java.awt.Font("Tw Cen MT", 1, 48)); // NOI18N
-        Headinglbl.setText("FOOD DELIVERY SYSTEM");
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("WELCOME");
-
-        javax.swing.GroupLayout jRightPanelLayout = new javax.swing.GroupLayout(jRightPanel);
-        jRightPanel.setLayout(jRightPanelLayout);
-        jRightPanelLayout.setHorizontalGroup(
-            jRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jRightPanelLayout.createSequentialGroup()
-                .addGap(320, 320, 320)
-                .addComponent(Headinglbl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jRightPanelLayout.createSequentialGroup()
-                .addGap(480, 480, 480)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jRightPanelLayout.setVerticalGroup(
-            jRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jRightPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Headinglbl)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(556, Short.MAX_VALUE))
-        );
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel2.setText("WELCOME");
+        jRightPanel.add(jLabel2, "card2");
 
         jSplitPane.setRightComponent(jRightPanel);
 
@@ -168,14 +158,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
 
-        if (userAccount == null) {
+        /*if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid credentials");
             return;
-        }else{
+        }else{*/
             CardLayout layout = (CardLayout)jRightPanel.getLayout();
             jRightPanel.add("workArea",userAccount.getRole().createWorkArea(jRightPanel, userAccount, system));
             layout.next(jRightPanel);
-        }
+        //}
 
         Loginbtn.setEnabled(false);
         Logoutbtn.setEnabled(true);
@@ -236,7 +226,6 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Headinglbl;
     private javax.swing.JPanel JLeftPanel;
     private javax.swing.JButton Loginbtn;
     private javax.swing.JButton Logoutbtn;
@@ -244,7 +233,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField Passwordtxt;
     private javax.swing.JLabel Usernamelbl;
     private javax.swing.JTextField Usernametxt;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jRightPanel;
     private javax.swing.JSplitPane jSplitPane;
     // End of variables declaration//GEN-END:variables

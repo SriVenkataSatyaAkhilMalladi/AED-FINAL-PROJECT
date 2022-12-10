@@ -21,7 +21,6 @@ import java.sql.Statement;
 public class UserAccountDirectory {
     
     private ArrayList<UserAccount> userAccountList;
-    private UserAccount useraccount;
     int uid;
     int eid;
     int rid;

@@ -9,6 +9,7 @@ import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
 
 /**
@@ -58,9 +59,6 @@ public class EcoSystem extends Organization{
     }
     
     
-    
-    
-    
 
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
 
@@ -70,10 +68,10 @@ public class EcoSystem extends Organization{
     }
     
     public static EcoSystem getInstance(){
-        if(business==null){
-            business=new EcoSystem();
+        if(getBusiness()==null){
+            setBusiness(new EcoSystem());
         }
-        return business;
+        return getBusiness();
     }
     
     @Override
@@ -85,12 +83,23 @@ public class EcoSystem extends Organization{
     private EcoSystem(){
         super(null);
        // networkList=new ArrayList<Network>();
+       restaurantDirectory = new RestaurantDirectory();
+       customerDirectory = new CustomerDirectory();
+       deliveryManDirectory = new DeliveryManDirectory();
     }
 
     
     public boolean checkIfUserIsUnique(String userName){
        //
        return false;
+    }
+
+    public static EcoSystem getBusiness() {
+        return business;
+    }
+
+    public static void setBusiness(EcoSystem aBusiness) {
+        business = aBusiness;
     }
     
 }
