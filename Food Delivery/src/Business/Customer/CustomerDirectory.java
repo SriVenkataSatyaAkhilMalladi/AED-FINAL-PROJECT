@@ -36,12 +36,21 @@ public class CustomerDirectory {
         this.customerDirectory = customerDirectory;
     }
     
+    public Customer createUserAccount(String name,String userName, String address, String phoneno){
+        Customer c = new Customer();
+                c.setName(name);
+                c.setUserName(userName);
+                c.setAddress(address);
+                c.setNumber(phoneno);
+                customerDirectory.add(c);
+                return c;
+    }
+    
     public Customer createUserAccount(String username){
         customer = new Customer(username);
         customerDirectory.add(customer);
         return customer;
     }
-    
     
     public void deleteCustomer(String username){
         for(int i=0;i<customerDirectory.size();i++){
