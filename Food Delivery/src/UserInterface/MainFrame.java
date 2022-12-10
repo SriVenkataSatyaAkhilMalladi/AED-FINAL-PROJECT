@@ -158,14 +158,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
 
-        /*if (userAccount == null) {
+        if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid credentials");
             return;
-        }else{*/
+        }else{
             CardLayout layout = (CardLayout)jRightPanel.getLayout();
             jRightPanel.add("workArea",userAccount.getRole().createWorkArea(jRightPanel, userAccount, system));
             layout.next(jRightPanel);
-        //}
+        }
 
         Loginbtn.setEnabled(false);
         Logoutbtn.setEnabled(true);
