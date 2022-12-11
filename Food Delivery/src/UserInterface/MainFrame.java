@@ -11,10 +11,13 @@ import Business.EcoSystem;
 import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
+import UserInterface.AboutUs.AboutUsPanel;
 import UserInterface.CustomerRole.RegisterPanel;
 import UserInterface.RestaurantAdminRole.AdminWorkAreaPanel;
 import UserInterface.SystemAdminWorkArea.ManageCustomers;
 import java.awt.CardLayout;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -47,6 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         restaurantDirectory = new RestaurantDirectory();
         customerDirectory = new CustomerDirectory();
         deliveryManDirectory = new DeliveryManDirectory();
+        //backroundbtn.setIcon(new ImageIcon(new ImageIcon("4.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
     }
 
     /**
@@ -74,11 +78,9 @@ public class MainFrame extends javax.swing.JFrame {
         jRightPanel = new javax.swing.JPanel();
         WelcomePanel = new javax.swing.JPanel();
         MainHeadinglbl = new javax.swing.JLabel();
+        backroundbtn = new javax.swing.JButton();
         Welcomelbl = new javax.swing.JLabel();
-        btn1ststep = new javax.swing.JButton();
-        btn2ndstep = new javax.swing.JButton();
-        btn3rdstep = new javax.swing.JButton();
-        btn4thstep = new javax.swing.JButton();
+        Aboutbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,7 +95,7 @@ public class MainFrame extends javax.swing.JFrame {
         Loginbtn.setBackground(new java.awt.Color(0, 0, 0));
         Loginbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Loginbtn.setForeground(new java.awt.Color(255, 255, 255));
-        Loginbtn.setText("Login");
+        Loginbtn.setText("Sign in");
         Loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginbtnActionPerformed(evt);
@@ -103,7 +105,7 @@ public class MainFrame extends javax.swing.JFrame {
         Logoutbtn.setBackground(new java.awt.Color(0, 0, 0));
         Logoutbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Logoutbtn.setForeground(new java.awt.Color(255, 255, 255));
-        Logoutbtn.setText("Logout");
+        Logoutbtn.setText("Sign Out");
         Logoutbtn.setEnabled(false);
         Logoutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +116,7 @@ public class MainFrame extends javax.swing.JFrame {
         Registerbtn.setBackground(new java.awt.Color(0, 0, 0));
         Registerbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Registerbtn.setForeground(new java.awt.Color(255, 255, 255));
-        Registerbtn.setText("Register");
+        Registerbtn.setText("Sign Up");
         Registerbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterbtnActionPerformed(evt);
@@ -122,7 +124,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         txtNewuser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtNewuser.setText("NEW USER?");
+        txtNewuser.setText("New Here?");
 
         Homebtn.setBackground(new java.awt.Color(0, 0, 0));
         Homebtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -168,13 +170,11 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(Logoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Homebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Registerbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNewuser)
                     .addComponent(Refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Exitbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 22, Short.MAX_VALUE))
+                    .addComponent(Exitbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewuser))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
-
-        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Passwordlbl, txtNewuser});
 
         JLeftPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Homebtn, Loginbtn, Logoutbtn, Registerbtn});
 
@@ -198,7 +198,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(txtNewuser)
                 .addGap(6, 6, 6)
                 .addComponent(Registerbtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
                 .addComponent(Refreshbtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Exitbtn))
@@ -219,34 +219,23 @@ public class MainFrame extends javax.swing.JFrame {
         MainHeadinglbl.setFont(new java.awt.Font("Onyx", 1, 90)); // NOI18N
         MainHeadinglbl.setText("SHARE TO EAT");
 
+        backroundbtn.setIcon(new javax.swing.ImageIcon("C:\\7srik\\files\\DOCS for MS\\NEU\\Courses and other related\\1st sem\\AED\\Project\\Main Project Food Delivery System\\Food Delivery\\src\\Images\\4.png")); // NOI18N
+        backroundbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backroundbtnActionPerformed(evt);
+            }
+        });
+
         Welcomelbl.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         Welcomelbl.setText("WELCOME");
 
-        btn1ststep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4.png"))); // NOI18N
-        btn1ststep.addActionListener(new java.awt.event.ActionListener() {
+        Aboutbtn.setBackground(new java.awt.Color(0, 0, 0));
+        Aboutbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Aboutbtn.setForeground(new java.awt.Color(255, 255, 255));
+        Aboutbtn.setText("Our Leadership");
+        Aboutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1ststepActionPerformed(evt);
-            }
-        });
-
-        btn2ndstep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1.jpg"))); // NOI18N
-        btn2ndstep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn2ndstepActionPerformed(evt);
-            }
-        });
-
-        btn3rdstep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.jpg"))); // NOI18N
-        btn3rdstep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn3rdstepActionPerformed(evt);
-            }
-        });
-
-        btn4thstep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.jpg"))); // NOI18N
-        btn4thstep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn4thstepActionPerformed(evt);
+                AboutbtnActionPerformed(evt);
             }
         });
 
@@ -254,47 +243,28 @@ public class MainFrame extends javax.swing.JFrame {
         WelcomePanel.setLayout(WelcomePanelLayout);
         WelcomePanelLayout.setHorizontalGroup(
             WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(backroundbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 1926, Short.MAX_VALUE)
             .addGroup(WelcomePanelLayout.createSequentialGroup()
-                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(WelcomePanelLayout.createSequentialGroup()
-                        .addGap(497, 497, 497)
-                        .addComponent(MainHeadinglbl))
-                    .addGroup(WelcomePanelLayout.createSequentialGroup()
-                        .addGap(291, 291, 291)
-                        .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn3rdstep)
-                            .addComponent(btn1ststep, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(180, 180, 180)
-                        .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn4thstep)
-                            .addComponent(btn2ndstep, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(WelcomePanelLayout.createSequentialGroup()
-                        .addGap(581, 581, 581)
-                        .addComponent(Welcomelbl)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(550, 550, 550)
+                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(MainHeadinglbl)
+                    .addComponent(Welcomelbl))
+                .addGap(359, 359, 359)
+                .addComponent(Aboutbtn)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-
-        WelcomePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn1ststep, btn2ndstep, btn3rdstep, btn4thstep});
-
         WelcomePanelLayout.setVerticalGroup(
             WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WelcomePanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(MainHeadinglbl)
-                .addGap(18, 18, 18)
+                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(MainHeadinglbl)
+                    .addComponent(Aboutbtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Welcomelbl)
-                .addGap(40, 40, 40)
-                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn2ndstep, javax.swing.GroupLayout.PREFERRED_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(btn1ststep, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
-                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn3rdstep)
-                    .addComponent(btn4thstep))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(backroundbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-
-        WelcomePanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn1ststep, btn2ndstep, btn3rdstep, btn4thstep});
 
         jRightPanel.add(WelcomePanel, "card2");
 
@@ -303,6 +273,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(jSplitPane, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbtnActionPerformed
@@ -369,26 +340,20 @@ public class MainFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_ExitbtnActionPerformed
 
-    private void btn1ststepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ststepActionPerformed
+    private void backroundbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backroundbtnActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "1) WELCOME TO OUR FOOD DELIVERY APPLICATION");
         
-    }//GEN-LAST:event_btn1ststepActionPerformed
+    }//GEN-LAST:event_backroundbtnActionPerformed
 
-    private void btn2ndstepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ndstepActionPerformed
+    private void AboutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutbtnActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "2) ADD DISHES AND ORDER");
-    }//GEN-LAST:event_btn2ndstepActionPerformed
-
-    private void btn3rdstepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3rdstepActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "3) WAIT FOR YOUR FAST DELIVERY");
-    }//GEN-LAST:event_btn3rdstepActionPerformed
-
-    private void btn4thstepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4thstepActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "4) HAVE A GOOD MEAL");
-    }//GEN-LAST:event_btn4thstepActionPerformed
+        CardLayout layout = (CardLayout)jRightPanel.getLayout();
+        AboutUsPanel aup = new AboutUsPanel(userProcessContainer);
+        //userProcessContainer.add("RegisterPanel", rp);
+        //layout.next(userProcessContainer);
+        jSplitPane.setRightComponent(aup);
+    }//GEN-LAST:event_AboutbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,6 +392,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Aboutbtn;
     private javax.swing.JButton Exitbtn;
     private javax.swing.JButton Homebtn;
     private javax.swing.JPanel JLeftPanel;
@@ -441,10 +407,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField Usernametxt;
     private javax.swing.JPanel WelcomePanel;
     private javax.swing.JLabel Welcomelbl;
-    private javax.swing.JButton btn1ststep;
-    private javax.swing.JButton btn2ndstep;
-    private javax.swing.JButton btn3rdstep;
-    private javax.swing.JButton btn4thstep;
+    private javax.swing.JButton backroundbtn;
     private javax.swing.JPanel jRightPanel;
     private javax.swing.JSplitPane jSplitPane;
     private javax.swing.JLabel txtNewuser;
