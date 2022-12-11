@@ -86,9 +86,6 @@ public class MainFrame extends javax.swing.JFrame {
         Passwordlbl.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Passwordlbl.setText("Password");
 
-        Loginbtn.setBackground(new java.awt.Color(0, 0, 0));
-        Loginbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Loginbtn.setForeground(new java.awt.Color(255, 255, 255));
         Loginbtn.setText("Login");
         Loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,9 +93,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        Logoutbtn.setBackground(new java.awt.Color(0, 0, 0));
-        Logoutbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Logoutbtn.setForeground(new java.awt.Color(255, 255, 255));
         Logoutbtn.setText("Logout");
         Logoutbtn.setEnabled(false);
         Logoutbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +101,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Register");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,9 +111,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("NEW USER?");
 
-        Homebtn.setBackground(new java.awt.Color(0, 0, 0));
-        Homebtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Homebtn.setForeground(new java.awt.Color(255, 255, 255));
         Homebtn.setText("Home");
         Homebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,9 +118,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        Refreshbtn.setBackground(new java.awt.Color(0, 0, 0));
-        Refreshbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Refreshbtn.setForeground(new java.awt.Color(255, 255, 255));
         Refreshbtn.setText("Refresh");
         Refreshbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,9 +125,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        Exitbtn.setBackground(new java.awt.Color(0, 0, 0));
-        Exitbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Exitbtn.setForeground(new java.awt.Color(255, 255, 255));
         Exitbtn.setText("Exit");
         Exitbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,20 +136,32 @@ public class MainFrame extends javax.swing.JFrame {
         JLeftPanel.setLayout(JLeftPanelLayout);
         JLeftPanelLayout.setHorizontalGroup(
             JLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Usernametxt)
-            .addComponent(Passwordtxt)
             .addGroup(JLeftPanelLayout.createSequentialGroup()
                 .addGroup(JLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Passwordlbl)
-                    .addComponent(Usernamelbl)
+                    .addComponent(Usernamelbl))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(JLeftPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(JLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JLeftPanelLayout.createSequentialGroup()
+                        .addGroup(JLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Passwordtxt)
+                            .addComponent(Usernametxt))
+                        .addGap(6, 6, 6))
+                    .addGroup(JLeftPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JLeftPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Exitbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Homebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Logoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Homebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(Refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Exitbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 22, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
 
         JLeftPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Passwordlbl, jLabel1});
@@ -194,9 +188,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(6, 6, 6)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
                 .addComponent(Refreshbtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(Exitbtn))
         );
 
@@ -256,7 +250,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(497, 497, 497)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
+                        .addGap(300, 300, 300)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))

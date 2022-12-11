@@ -48,17 +48,16 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 153));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
 
-        enterpriseLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Restaurant :");
 
-        lblRestName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblRestName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblRestName.setText("<value>");
 
         btnManageOrder.setBackground(new java.awt.Color(0, 0, 0));
-        btnManageOrder.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnManageOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnManageOrder.setText("Manage Orders");
         btnManageOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +67,6 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
         });
 
         btnManageMenu.setBackground(new java.awt.Color(0, 0, 0));
-        btnManageMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnManageMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnManageMenu.setText("Manage menu");
         btnManageMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +76,6 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
         });
 
         btnManageRestroInfo.setBackground(new java.awt.Color(0, 0, 0));
-        btnManageRestroInfo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnManageRestroInfo.setForeground(new java.awt.Color(255, 255, 255));
         btnManageRestroInfo.setText("Manage Restaurant Info");
         btnManageRestroInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +91,19 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGap(360, 360, 360)
+=======
+                        .addGap(216, 216, 216)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblRestName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(346, 346, 346)
+>>>>>>> main
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnManageOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnManageMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,13 +127,13 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRestName))
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addComponent(btnManageOrder)
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addComponent(btnManageMenu)
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addComponent(btnManageRestroInfo)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
