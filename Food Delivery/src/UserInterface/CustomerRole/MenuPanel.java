@@ -14,7 +14,9 @@ import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author srikr
@@ -41,7 +43,7 @@ public class MenuPanel extends javax.swing.JPanel {
     }
 
     public void populateMenuTable(){
-         DefaultTableModel tablemodel = (DefaultTableModel) tblMenu.getModel();
+         DefaultTableModel tablemodel = (DefaultTableModel) tblMenu1.getModel();
         
             tablemodel.setRowCount(0);
                 Object[] row = new Object[3];
@@ -54,7 +56,7 @@ public class MenuPanel extends javax.swing.JPanel {
     }
     
     public void populateCart(Dishes dishitem){
-        DefaultTableModel tablemodel = (DefaultTableModel) tblCart.getModel();
+        DefaultTableModel tablemodel = (DefaultTableModel) tblCart1.getModel();
         tablemodel.setRowCount(0);
         
          items.add(dishitem);
@@ -79,19 +81,22 @@ public class MenuPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        btnOrder = new javax.swing.JButton();
-        txtAddress = new javax.swing.JTextField();
-        backJButton = new javax.swing.JButton();
-        valueLabel = new javax.swing.JLabel();
-        enterpriseLabel = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblCart = new javax.swing.JTable();
-        btnAddToCart = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblMenu = new javax.swing.JTable();
-        btnRemoveFromCart = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        enterpriseLabel1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblMenu1 = new javax.swing.JTable();
+        btnRemoveFromCart1 = new javax.swing.JButton();
+        backJButton1 = new javax.swing.JButton();
+        valueLabel1 = new javax.swing.JLabel();
+        txtSearchM1 = new javax.swing.JTextField();
+        btnAddToCart1 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblCart1 = new javax.swing.JTable();
+        txtAddress1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        SearchM1btn = new javax.swing.JButton();
+        btnOrder1 = new javax.swing.JButton();
+        SearchM2btn = new javax.swing.JButton();
+        txtSearchM2 = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,42 +111,12 @@ public class MenuPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBackground(new java.awt.Color(255, 255, 153));
 
-        btnOrder.setBackground(new java.awt.Color(0, 0, 0));
-        btnOrder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnOrder.setForeground(new java.awt.Color(255, 255, 255));
-        btnOrder.setText("Order");
-        btnOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 100, -1));
-        jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 570, 150, -1));
+        enterpriseLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        enterpriseLabel1.setText("Your Cart :");
 
-        backJButton.setBackground(new java.awt.Color(0, 0, 0));
-        backJButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        backJButton.setForeground(new java.awt.Color(255, 255, 255));
-        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.jpg"))); // NOI18N
-        backJButton.setText("<<Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 60));
-
-        valueLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        valueLabel.setText("<value>");
-        jPanel1.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 130, -1));
-
-        enterpriseLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        enterpriseLabel.setText("Your Cart :");
-        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 90, 30));
-
-        tblCart.setModel(new javax.swing.table.DefaultTableModel(
+        tblMenu1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -157,22 +132,43 @@ public class MenuPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblCart);
+        jScrollPane4.setViewportView(tblMenu1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, 130));
-
-        btnAddToCart.setBackground(new java.awt.Color(0, 0, 0));
-        btnAddToCart.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnAddToCart.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddToCart.setText("Add To Cart");
-        btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveFromCart1.setBackground(new java.awt.Color(0, 0, 0));
+        btnRemoveFromCart1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRemoveFromCart1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoveFromCart1.setText("Remove Item");
+        btnRemoveFromCart1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddToCartActionPerformed(evt);
+                btnRemoveFromCart1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAddToCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, -1, -1));
 
-        tblMenu.setModel(new javax.swing.table.DefaultTableModel(
+        backJButton1.setBackground(new java.awt.Color(0, 0, 0));
+        backJButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        backJButton1.setForeground(new java.awt.Color(255, 255, 255));
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.jpg"))); // NOI18N
+        backJButton1.setText("<<Back");
+        backJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton1ActionPerformed(evt);
+            }
+        });
+
+        valueLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        valueLabel1.setText("<value>");
+
+        btnAddToCart1.setBackground(new java.awt.Color(0, 0, 0));
+        btnAddToCart1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnAddToCart1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddToCart1.setText("Add To Cart");
+        btnAddToCart1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddToCart1ActionPerformed(evt);
+            }
+        });
+
+        tblCart1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -188,116 +184,161 @@ public class MenuPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tblMenu);
+        jScrollPane5.setViewportView(tblCart1);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, 130));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Location:");
 
-        btnRemoveFromCart.setBackground(new java.awt.Color(0, 0, 0));
-        btnRemoveFromCart.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnRemoveFromCart.setForeground(new java.awt.Color(255, 255, 255));
-        btnRemoveFromCart.setText("Remove Item");
-        btnRemoveFromCart.addActionListener(new java.awt.event.ActionListener() {
+        SearchM1btn.setBackground(new java.awt.Color(0, 0, 0));
+        SearchM1btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        SearchM1btn.setForeground(new java.awt.Color(255, 255, 255));
+        SearchM1btn.setText("Search");
+        SearchM1btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveFromCartActionPerformed(evt);
+                SearchM1btnActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRemoveFromCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 480, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Location:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, 80, -1));
+        btnOrder1.setBackground(new java.awt.Color(0, 0, 0));
+        btnOrder1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnOrder1.setForeground(new java.awt.Color(255, 255, 255));
+        btnOrder1.setText("Order");
+        btnOrder1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrder1ActionPerformed(evt);
+            }
+        });
+
+        SearchM2btn.setBackground(new java.awt.Color(0, 0, 0));
+        SearchM2btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        SearchM2btn.setForeground(new java.awt.Color(255, 255, 255));
+        SearchM2btn.setText("Search");
+        SearchM2btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchM2btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 847, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(backJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(360, 360, 360)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtSearchM1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SearchM1btn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(valueLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtSearchM2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(SearchM2btn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRemoveFromCart1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnAddToCart1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnOrder1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(backJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valueLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearchM1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchM1btn)
+                    .addComponent(btnAddToCart1))
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearchM2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchM2btn)
+                    .addComponent(btnRemoveFromCart1))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(btnOrder1)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-
-        if(txtAddress.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please Enter your location");
-            return;
-        }
-        String address=txtAddress.getText();
-        restaurant.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
-        for(Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()){
-            if(userAccount.getUsername().equals(cust.getUserName())){
-                cust.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
-                JOptionPane.showMessageDialog(null, "You Order placed successfully");
-            }
-        }
-
-    }//GEN-LAST:event_btnOrderActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CustomerAreaPanel dwjp = (CustomerAreaPanel) component;
-        dwjp.populateRequestTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-
-    }//GEN-LAST:event_backJButtonActionPerformed
-
-    private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
+    private void btnRemoveFromCart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveFromCart1ActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblMenu.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to add","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            Dishes dishItem=(Dishes)tblMenu.getValueAt(selectedRow, 0);
+    }//GEN-LAST:event_btnRemoveFromCart1ActionPerformed
 
-            populateCart(dishItem);
-
-        }
-
-    }//GEN-LAST:event_btnAddToCartActionPerformed
-
-    private void btnRemoveFromCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveFromCartActionPerformed
+    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblCart.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from the table to remove from cart","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            Dishes item=(Dishes)tblCart.getValueAt(selectedRow, 0);
-            items.remove(item);
-            DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
-            model.setRowCount(0);
-            // commented no use
-        }
-    }//GEN-LAST:event_btnRemoveFromCartActionPerformed
+    }//GEN-LAST:event_backJButton1ActionPerformed
+
+    private void btnAddToCart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCart1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddToCart1ActionPerformed
+
+    private void SearchM1btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchM1btnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblMenu1.getModel();
+        TableRowSorter<DefaultTableModel> tm = new TableRowSorter<>(model);
+        tblMenu1.setRowSorter(tm);
+        tm.setRowFilter(RowFilter.regexFilter(txtSearchM1.getText().trim()));
+    }//GEN-LAST:event_SearchM1btnActionPerformed
+
+    private void btnOrder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrder1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOrder1ActionPerformed
+
+    private void SearchM2btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchM2btnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblCart1.getModel();
+        TableRowSorter<DefaultTableModel> tm = new TableRowSorter<>(model);
+        tblCart1.setRowSorter(tm);
+        tm.setRowFilter(RowFilter.regexFilter(txtSearchM2.getText().trim()));
+    }//GEN-LAST:event_SearchM2btnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
-    private javax.swing.JButton btnAddToCart;
-    private javax.swing.JButton btnOrder;
-    private javax.swing.JButton btnRemoveFromCart;
-    private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton SearchM1btn;
+    private javax.swing.JButton SearchM2btn;
+    private javax.swing.JButton backJButton1;
+    private javax.swing.JButton btnAddToCart1;
+    private javax.swing.JButton btnOrder1;
+    private javax.swing.JButton btnRemoveFromCart1;
+    private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable tblCart;
-    private javax.swing.JTable tblMenu;
-    private javax.swing.JTextField txtAddress;
-    private javax.swing.JLabel valueLabel;
+    private javax.swing.JTable tblCart1;
+    private javax.swing.JTable tblMenu1;
+    private javax.swing.JTextField txtAddress1;
+    private javax.swing.JTextField txtSearchM1;
+    private javax.swing.JTextField txtSearchM2;
+    private javax.swing.JLabel valueLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,29 +21,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnManageOrder" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                          <Component id="btnManageMenu" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                          <Component id="btnManageRestroInfo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="enterpriseLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblRestName" min="-2" pref="130" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Component id="btnManageOrder" linkSize="1" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                  <Component id="btnManageMenu" linkSize="1" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                  <Component id="btnManageRestroInfo" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="enterpriseLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblRestName" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="89" max="32767" attributes="0"/>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,11 +49,11 @@
                   <Component id="lblRestName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="btnManageOrder" min="-2" max="-2" attributes="0"/>
+              <Component id="btnManageOrder" linkSize="2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="btnManageMenu" min="-2" max="-2" attributes="0"/>
+              <Component id="btnManageMenu" linkSize="2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="btnManageRestroInfo" min="-2" max="-2" attributes="0"/>
+              <Component id="btnManageRestroInfo" linkSize="2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="267" max="32767" attributes="0"/>
           </Group>
       </Group>
