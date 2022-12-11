@@ -98,7 +98,7 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrderDetails);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 650, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 58, 650, 96));
 
         processJButton.setBackground(new java.awt.Color(0, 0, 0));
         processJButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,7 +108,7 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, -1));
 
         refreshJButton.setBackground(new java.awt.Color(0, 0, 0));
         refreshJButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,10 +118,10 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
                 refreshJButtonActionPerformed(evt);
             }
         });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
 
         jLabel1.setText("Order Detail");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
