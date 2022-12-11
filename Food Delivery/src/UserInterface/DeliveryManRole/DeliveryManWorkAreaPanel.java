@@ -74,7 +74,6 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblOrderDetails.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblOrderDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -103,7 +102,6 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 650, 96));
 
         processJButton.setBackground(new java.awt.Color(0, 0, 0));
-        processJButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         processJButton.setForeground(new java.awt.Color(255, 255, 255));
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +112,6 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
         add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, -1, -1));
 
         refreshJButton.setBackground(new java.awt.Color(0, 0, 0));
-        refreshJButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshJButton.setForeground(new java.awt.Color(255, 255, 255));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +121,7 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
         });
         add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("Order Detail");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents

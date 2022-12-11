@@ -80,7 +80,6 @@ public class ManageOrders extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 153));
 
         btnAssignDeliveryMan.setBackground(new java.awt.Color(0, 0, 0));
-        btnAssignDeliveryMan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAssignDeliveryMan.setForeground(new java.awt.Color(255, 255, 255));
         btnAssignDeliveryMan.setText("Assign Delivery Man to Order");
         btnAssignDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +89,6 @@ public class ManageOrders extends javax.swing.JPanel {
         });
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
-        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +97,6 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
-        tblOrderDetail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblOrderDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -119,7 +116,6 @@ public class ManageOrders extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblOrderDetail);
 
         btnRefresh.setBackground(new java.awt.Color(0, 0, 0));
-        btnRefresh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +125,6 @@ public class ManageOrders extends javax.swing.JPanel {
         });
 
         btnViewOrder.setBackground(new java.awt.Color(0, 0, 0));
-        btnViewOrder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnViewOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnViewOrder.setText("View Order");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +145,7 @@ public class ManageOrders extends javax.swing.JPanel {
                         .addComponent(btnViewOrder)
                         .addGap(69, 69, 69)
                         .addComponent(btnAssignDeliveryMan)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                         .addComponent(btnRefresh)
                         .addGap(120, 120, 120)
                         .addComponent(btnBack)))
@@ -167,7 +162,7 @@ public class ManageOrders extends javax.swing.JPanel {
                     .addComponent(btnViewOrder)
                     .addComponent(btnRefresh)
                     .addComponent(btnBack))
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
