@@ -7,14 +7,16 @@ import Business.Customer.Customer;
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.EcoSystem;
-import Business.Employee.Employee;
+import Business.Order.Order;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
-import java.awt.CardLayout;
+import UserInterface.MainFrame;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,13 +27,16 @@ public class RegisterPanel extends javax.swing.JPanel {
     /**
      * Creates new form RegisterPanel
      */
+    private JPanel userProcessContainer;
     private EcoSystem ecosystem;
+    private UserAccount user;
     private RestaurantDirectory restaurantDirectory;
     private CustomerDirectory customerDirectory;
     private DeliveryManDirectory deliveryManDirectory;
-    public RegisterPanel() {
+    public RegisterPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
-        ecosystem=new EcoSystem(restaurantDirectory,customerDirectory,deliveryManDirectory);
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
     }
 
     /**
@@ -55,6 +60,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        lblPN = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 153));
 
@@ -87,6 +93,9 @@ public class RegisterPanel extends javax.swing.JPanel {
         jLabel4.setText("NEW CUSTOMER REGISTRATION");
 
         txtPhoneno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPhonenoKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPhonenoKeyTyped(evt);
             }
@@ -103,9 +112,9 @@ public class RegisterPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(500, 500, 500)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(500, 500, 500)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
@@ -117,13 +126,16 @@ public class RegisterPanel extends javax.swing.JPanel {
                             .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPhoneno, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPhoneno, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(lblPN, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCreateCustomer))
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap())))
+                            .addComponent(btnCreateCustomer)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(493, 493, 493)
+                        .addComponent(jLabel4)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtPassword, txtUserName});
@@ -136,25 +148,27 @@ public class RegisterPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(txtPhoneno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPhoneno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblPN, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40)
                 .addComponent(btnCreateCustomer)
-                .addContainerGap())
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtPassword, txtUserName});
@@ -189,11 +203,18 @@ public class RegisterPanel extends javax.swing.JPanel {
         String address = txtAddress.getText();
         String pass = txtPassword.getText();
          
-        for(UserAccount account : ecosystem.getUserAccountDirectory().getUserAccountList()) {
-            if(account.getUsername().equals(uname)) {
-                JOptionPane.showMessageDialog(null, "Username Already exists");
-                return;
-            }
+        if(ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(txtUserName.getText())){
+            UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(txtName.getText(), txtUserName.getText(), txtPassword.getText(), null, new CustomerRole());
+            Customer customer = ecosystem.getCustomerDirectory().createUserAccount(txtUserName.getText());
+            txtName.setText("");
+            txtUserName.setText("");
+            txtPassword.setText("");
+            txtAddress.setText("");
+            txtPhoneno.setText("");
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Username is not unique");
         }
 
         //sendConfirmationEmail(txtPhoneno.getText());
@@ -202,9 +223,14 @@ public class RegisterPanel extends javax.swing.JPanel {
         c.setAddress(address);
         c.setNumber(Phoneno);
         c.setUserName(uname);
+        ArrayList<Order> o = new ArrayList();
+        c.setOrderList(o);
         ecosystem.getCustomerDirectory().addCustomer(c);
-        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(name,uname, pass, null, new CustomerRole());
+        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(name,uname, pass,null, new CustomerRole());
         JOptionPane.showMessageDialog(null, "Customer Profile Created");
+        MainFrame mainframe = new MainFrame();
+        mainframe.show();
+        
          
     }//GEN-LAST:event_btnCreateCustomerActionPerformed
 
@@ -224,6 +250,19 @@ public class RegisterPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtNameKeyTyped
 
+    private void txtPhonenoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhonenoKeyReleased
+        // TODO add your handling code here:
+        String PATTERN="^[0-9]{10,10}$";
+        Pattern patt=Pattern.compile(PATTERN);
+        Matcher match=patt.matcher(txtPhoneno.getText());
+        if(!match.matches()){
+            lblPN.setText("Phone Number is incorrect");
+        }
+        else{
+            lblPN.setText("");
+        }
+    }//GEN-LAST:event_txtPhonenoKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateCustomer;
@@ -233,6 +272,7 @@ public class RegisterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblPN;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
