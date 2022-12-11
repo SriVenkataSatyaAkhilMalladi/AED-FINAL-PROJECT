@@ -96,6 +96,7 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 153));
 
+        tblPreviousOrders.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblPreviousOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -114,13 +115,14 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblPreviousOrders);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Previous Orders");
 
-        lblCustomerID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblCustomerID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCustomerID.setText("<value>,");
 
         btnOrder.setBackground(new java.awt.Color(0, 0, 0));
+        btnOrder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnOrder.setText("Place Order");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -129,13 +131,14 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Restaurant");
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         enterpriseLabel.setText("Hi");
 
         refreshTestJButton.setBackground(new java.awt.Color(0, 0, 0));
+        refreshTestJButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshTestJButton.setForeground(new java.awt.Color(255, 255, 255));
         refreshTestJButton.setText("Refresh");
         refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +147,7 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
             }
         });
 
+        tblRestaurant.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblRestaurant.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -187,17 +191,14 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
                                 .addGap(183, 183, 183)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(refreshTestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(enterpriseLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(272, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnOrder, refreshTestJButton});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -209,15 +210,15 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(refreshTestJButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(btnOrder))
-                .addGap(60, 60, 60)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnOrder, refreshTestJButton});

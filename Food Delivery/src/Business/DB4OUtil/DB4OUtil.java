@@ -33,7 +33,12 @@ public class DB4OUtil {
 
     private ObjectContainer createConnection() {
         try {
-            ObjectContainer db = Db4oEmbedded.openFile(FILENAME);
+            EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+            ObjectContainer db = Db4oEmbedded.openFile(config,FILENAME);
+            config.common().add(new TransparentPersistenceSupport());
+            config.common().activationDepth(Integer.MAX_VALUE);
+            config.common().updateDepth(Integer.MAX_VALUE);
+            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true);
             return db;
         } catch (Exception ex) {
             System.out.print(ex.getMessage());

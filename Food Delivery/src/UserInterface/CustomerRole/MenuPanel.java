@@ -110,6 +110,7 @@ public class MenuPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnOrder.setBackground(new java.awt.Color(0, 0, 0));
+        btnOrder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnOrder.setText("Order");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -117,10 +118,11 @@ public class MenuPanel extends javax.swing.JPanel {
                 btnOrderActionPerformed(evt);
             }
         });
-        jPanel1.add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 100, -1));
-        jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 150, -1));
+        jPanel1.add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 100, -1));
+        jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 570, 150, -1));
 
         backJButton.setBackground(new java.awt.Color(0, 0, 0));
+        backJButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         backJButton.setForeground(new java.awt.Color(255, 255, 255));
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -128,14 +130,15 @@ public class MenuPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 530, -1, -1));
+        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        valueLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         valueLabel.setText("<value>");
-        jPanel1.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 130, -1));
+        jPanel1.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 130, -1));
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         enterpriseLabel.setText("Your Cart :");
-        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 120, 30));
+        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 90, 30));
 
         tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,9 +158,10 @@ public class MenuPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblCart);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, -1, 130));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, 130));
 
         btnAddToCart.setBackground(new java.awt.Color(0, 0, 0));
+        btnAddToCart.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAddToCart.setForeground(new java.awt.Color(255, 255, 255));
         btnAddToCart.setText("Add To Cart");
         btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +169,7 @@ public class MenuPanel extends javax.swing.JPanel {
                 btnAddToCartActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAddToCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, -1, -1));
+        jPanel1.add(btnAddToCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, -1, -1));
 
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,9 +189,10 @@ public class MenuPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tblMenu);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, 130));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, 130));
 
         btnRemoveFromCart.setBackground(new java.awt.Color(0, 0, 0));
+        btnRemoveFromCart.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRemoveFromCart.setForeground(new java.awt.Color(255, 255, 255));
         btnRemoveFromCart.setText("Remove Item");
         btnRemoveFromCart.addActionListener(new java.awt.event.ActionListener() {
@@ -195,26 +200,25 @@ public class MenuPanel extends javax.swing.JPanel {
                 btnRemoveFromCartActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRemoveFromCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, -1, -1));
+        jPanel1.add(btnRemoveFromCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 480, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Location:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 80, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+            .addGap(0, 847, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addGap(0, 672, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

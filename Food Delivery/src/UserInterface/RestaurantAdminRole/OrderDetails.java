@@ -73,9 +73,11 @@ public class OrderDetails extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 153));
 
+        lblOrderID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblOrderID.setText("jLabel3");
 
         btnStatus.setBackground(new java.awt.Color(0, 0, 0));
+        btnStatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnStatus.setForeground(new java.awt.Color(255, 255, 255));
         btnStatus.setText("Change Status to Ready");
         btnStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +87,7 @@ public class OrderDetails extends javax.swing.JPanel {
         });
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +96,7 @@ public class OrderDetails extends javax.swing.JPanel {
             }
         });
 
+        tblOrderDetails.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblOrderDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -111,13 +115,10 @@ public class OrderDetails extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrderDetails);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("OrderID:");
 
-<<<<<<< HEAD
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-=======
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
->>>>>>> main
         jLabel4.setText("Order Details");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -127,11 +128,7 @@ public class OrderDetails extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                         .addGap(172, 172, 172)
-=======
-                        .addGap(171, 171, 171)
->>>>>>> main
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnStatus)
@@ -143,28 +140,16 @@ public class OrderDetails extends javax.swing.JPanel {
                                 .addComponent(lblOrderID))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                         .addGap(338, 338, 338)
                         .addComponent(jLabel4)))
                 .addContainerGap(220, Short.MAX_VALUE))
-=======
-                        .addGap(349, 349, 349)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(221, Short.MAX_VALUE))
->>>>>>> main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-=======
-                .addGap(74, 74, 74)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
->>>>>>> main
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblOrderID))
@@ -174,7 +159,7 @@ public class OrderDetails extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStatus)
                     .addComponent(btnBack))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
