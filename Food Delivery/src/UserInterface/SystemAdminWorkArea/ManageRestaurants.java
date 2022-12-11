@@ -148,7 +148,11 @@ public class ManageRestaurants extends javax.swing.JPanel {
 
         jLabel1.setText("Name:");
 
+<<<<<<< HEAD
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+=======
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+>>>>>>> main
         jLabel4.setText("Restaurant Management");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -162,6 +166,24 @@ public class ManageRestaurants extends javax.swing.JPanel {
                         .addGap(77, 77, 77)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
+                                .addComponent(btnUpdate)
+                                .addGap(38, 38, 38)
+                                .addComponent(btnDelete)
+                                .addGap(38, 38, 38)
+                                .addComponent(btnSave)
+                                .addGap(38, 38, 38)
+                                .addComponent(btnBack))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(464, 464, 464)
+                        .addComponent(btnRestrauntAdmin)))
+                .addContainerGap(188, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(464, 464, 464)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
                                 .addGap(102, 102, 102)
                                 .addComponent(btnRestrauntAdmin))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -187,13 +209,20 @@ public class ManageRestaurants extends javax.swing.JPanel {
                             .addComponent(btnBack))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(214, Short.MAX_VALUE))
+>>>>>>> main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(32, 32, 32)
+=======
                 .addGap(38, 38, 38)
                 .addComponent(jLabel4)
                 .addGap(31, 31, 31)
+>>>>>>> main
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,7 +244,11 @@ public class ManageRestaurants extends javax.swing.JPanel {
                     .addComponent(btnDelete)
                     .addComponent(btnSave)
                     .addComponent(btnBack))
+<<<<<<< HEAD
+                .addContainerGap(90, Short.MAX_VALUE))
+=======
                 .addContainerGap(159, Short.MAX_VALUE))
+>>>>>>> main
         );
     }// </editor-fold>//GEN-END:initComponents
 
