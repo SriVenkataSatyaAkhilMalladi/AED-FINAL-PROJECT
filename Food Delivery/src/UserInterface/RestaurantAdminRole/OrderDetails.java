@@ -70,6 +70,8 @@ public class OrderDetails extends javax.swing.JPanel {
         tblOrderDetails = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         lblOrderID.setText("jLabel3");
 
         btnStatus.setBackground(new java.awt.Color(0, 0, 0));

@@ -46,6 +46,8 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
         btnManageMenu = new javax.swing.JButton();
         btnManageRestroInfo = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
 

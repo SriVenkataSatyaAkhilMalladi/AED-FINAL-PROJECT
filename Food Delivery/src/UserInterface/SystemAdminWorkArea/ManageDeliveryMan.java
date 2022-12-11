@@ -76,6 +76,8 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         btnRegisterDeliveryMan.setBackground(new java.awt.Color(0, 0, 0));
         btnRegisterDeliveryMan.setForeground(new java.awt.Color(255, 255, 255));
         btnRegisterDeliveryMan.setText("Register DeliveryMan");

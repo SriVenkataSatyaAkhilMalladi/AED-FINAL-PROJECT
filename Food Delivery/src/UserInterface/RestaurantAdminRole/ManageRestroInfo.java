@@ -70,6 +70,8 @@ public class ManageRestroInfo extends javax.swing.JPanel {
         lblPN = new javax.swing.JLabel();
         lblAD = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<< Back");

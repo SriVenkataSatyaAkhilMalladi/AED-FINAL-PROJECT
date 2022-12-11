@@ -77,6 +77,8 @@ public class ManageOrders extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         btnViewOrder = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         btnAssignDeliveryMan.setBackground(new java.awt.Color(0, 0, 0));
         btnAssignDeliveryMan.setForeground(new java.awt.Color(255, 255, 255));
         btnAssignDeliveryMan.setText("Assign Delivery Man to Order");
@@ -164,7 +166,7 @@ public class ManageOrders extends javax.swing.JPanel {
                     .addComponent(btnAssignDeliveryMan)
                     .addComponent(btnViewOrder)
                     .addComponent(btnRefresh))
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

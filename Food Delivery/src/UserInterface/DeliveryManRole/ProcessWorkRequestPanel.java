@@ -41,6 +41,8 @@ public class ProcessWorkRequestPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         submitJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         backJButton.setBackground(new java.awt.Color(0, 0, 0));
         backJButton.setForeground(new java.awt.Color(255, 255, 255));
         backJButton.setText("<<Back");

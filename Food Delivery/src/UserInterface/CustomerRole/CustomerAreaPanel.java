@@ -94,6 +94,8 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRestaurant = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         tblPreviousOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
