@@ -68,6 +68,7 @@ public class DeliveryManAssignment extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 153));
 
         btnOrderAssignment.setBackground(new java.awt.Color(0, 0, 0));
+        btnOrderAssignment.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnOrderAssignment.setForeground(new java.awt.Color(255, 255, 255));
         btnOrderAssignment.setText("Assign Order");
         btnOrderAssignment.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +78,7 @@ public class DeliveryManAssignment extends javax.swing.JPanel {
         });
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +87,7 @@ public class DeliveryManAssignment extends javax.swing.JPanel {
             }
         });
 
+        tblDeliveryMan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblDeliveryMan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -108,14 +111,14 @@ public class DeliveryManAssignment extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(300, 300, 300)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnOrderAssignment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBack)))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +129,7 @@ public class DeliveryManAssignment extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOrderAssignment)
                     .addComponent(btnBack))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -72,9 +72,11 @@ public class OrderDetails extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 153));
 
+        lblOrderID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblOrderID.setText("jLabel3");
 
         btnStatus.setBackground(new java.awt.Color(0, 0, 0));
+        btnStatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnStatus.setForeground(new java.awt.Color(255, 255, 255));
         btnStatus.setText("Change Status to Ready");
         btnStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +86,7 @@ public class OrderDetails extends javax.swing.JPanel {
         });
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +95,7 @@ public class OrderDetails extends javax.swing.JPanel {
             }
         });
 
+        tblOrderDetails.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblOrderDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -110,6 +114,7 @@ public class OrderDetails extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrderDetails);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("OrderID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -143,7 +148,7 @@ public class OrderDetails extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStatus)
                     .addComponent(btnBack))
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
