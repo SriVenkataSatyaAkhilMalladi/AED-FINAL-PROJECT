@@ -99,7 +99,9 @@ public class OrderDetails extends javax.swing.JPanel {
             }
         });
 
-        tblOrderDetails.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblOrderDetails.setBackground(new java.awt.Color(255, 255, 153));
+        tblOrderDetails.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblOrderDetails.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblOrderDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -116,6 +118,10 @@ public class OrderDetails extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblOrderDetails.setRowHeight(26);
+        tblOrderDetails.setRowMargin(1);
+        tblOrderDetails.setShowHorizontalLines(true);
+        tblOrderDetails.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblOrderDetails);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

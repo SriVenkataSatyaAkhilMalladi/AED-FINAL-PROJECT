@@ -78,7 +78,9 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblOrderDetails.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblOrderDetails.setBackground(new java.awt.Color(255, 255, 153));
+        tblOrderDetails.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblOrderDetails.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblOrderDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -102,6 +104,10 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblOrderDetails.setRowHeight(26);
+        tblOrderDetails.setRowMargin(1);
+        tblOrderDetails.setShowHorizontalLines(true);
+        tblOrderDetails.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblOrderDetails);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 650, 96));

@@ -149,7 +149,9 @@ public class ManageCustomers extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Password:");
 
-        tblCustomers.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblCustomers.setBackground(new java.awt.Color(255, 255, 153));
+        tblCustomers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblCustomers.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblCustomers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -158,6 +160,10 @@ public class ManageCustomers extends javax.swing.JPanel {
                 "Name", "UserName", "Password"
             }
         ));
+        tblCustomers.setRowHeight(26);
+        tblCustomers.setRowMargin(1);
+        tblCustomers.setShowHorizontalLines(true);
+        tblCustomers.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblCustomers);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -230,9 +236,9 @@ public class ManageCustomers extends javax.swing.JPanel {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btnCreateCustomer)
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SearchResbtn))
@@ -242,7 +248,7 @@ public class ManageCustomers extends javax.swing.JPanel {
                     .addComponent(btnSave)
                     .addComponent(btnBack)
                     .addComponent(btnDelete))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

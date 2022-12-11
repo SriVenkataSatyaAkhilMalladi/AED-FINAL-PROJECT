@@ -104,7 +104,9 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
-        tblOrderDetail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblOrderDetail.setBackground(new java.awt.Color(255, 255, 153));
+        tblOrderDetail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        tblOrderDetail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblOrderDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -121,6 +123,10 @@ public class ManageOrders extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblOrderDetail.setRowHeight(26);
+        tblOrderDetail.setRowMargin(1);
+        tblOrderDetail.setShowHorizontalLines(true);
+        tblOrderDetail.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblOrderDetail);
 
         btnRefresh.setBackground(new java.awt.Color(0, 0, 0));
@@ -161,25 +167,26 @@ public class ManageOrders extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(280, 280, 280)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnViewOrder)
-                        .addGap(50, 50, 50)
-                        .addComponent(btnAssignDeliveryMan)
-                        .addGap(50, 50, 50)
-                        .addComponent(btnRefresh)
-                        .addGap(50, 50, 50)
-                        .addComponent(btnBack))
+                        .addGap(280, 280, 280)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnViewOrder)
+                                .addGap(50, 50, 50)
+                                .addComponent(btnAssignDeliveryMan)
+                                .addGap(50, 50, 50)
+                                .addComponent(btnRefresh)
+                                .addGap(50, 50, 50)
+                                .addComponent(btnBack))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchResbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SearchResbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(380, 380, 380)
-                .addComponent(jLabel1)
+                        .addGap(380, 380, 380)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

@@ -154,7 +154,9 @@ public class ManageMenu extends javax.swing.JPanel {
             }
         });
 
-        tblMenuCatalogue.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblMenuCatalogue.setBackground(new java.awt.Color(255, 255, 153));
+        tblMenuCatalogue.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        tblMenuCatalogue.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblMenuCatalogue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -171,6 +173,10 @@ public class ManageMenu extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblMenuCatalogue.setRowHeight(26);
+        tblMenuCatalogue.setRowMargin(1);
+        tblMenuCatalogue.setShowHorizontalLines(true);
+        tblMenuCatalogue.setShowVerticalLines(true);
         jScrollPane2.setViewportView(tblMenuCatalogue);
 
         btnDelete.setBackground(new java.awt.Color(0, 0, 0));
