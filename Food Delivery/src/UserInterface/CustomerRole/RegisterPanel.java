@@ -56,6 +56,8 @@ public class RegisterPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         jLabel1.setText("Name:");
 
         jLabel2.setText("UserName:");
@@ -73,6 +75,12 @@ public class RegisterPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel4.setText("NEW CUSTOMER REGISTRATION");
+
+        txtPhoneno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhonenoKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Phone no:");
 
@@ -190,6 +198,14 @@ public class RegisterPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Customer Profile Created");
          
     }//GEN-LAST:event_btnCreateCustomerActionPerformed
+
+    private void txtPhonenoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhonenoKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPhonenoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

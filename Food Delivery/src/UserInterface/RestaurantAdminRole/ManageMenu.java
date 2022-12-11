@@ -99,6 +99,8 @@ public class ManageMenu extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        setBackground(new java.awt.Color(255, 255, 153));
+
         jLabel1.setText("Food Name:");
 
         jLabel2.setText("Food Description:");
@@ -108,6 +110,11 @@ public class ManageMenu extends javax.swing.JPanel {
         txtPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPriceActionPerformed(evt);
+            }
+        });
+        txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceKeyTyped(evt);
             }
         });
 
@@ -265,6 +272,14 @@ public class ManageMenu extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPriceKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -56,7 +56,7 @@ public class SystemAdminWorkAreaPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
 
         jTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
             public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
@@ -70,19 +70,19 @@ public class SystemAdminWorkAreaPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 331, Short.MAX_VALUE))
+                .addGap(0, 350, Short.MAX_VALUE))
         );
 
         jSplitPane.setLeftComponent(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 153));
 
         jLabel1.setText("Selected Node:");
 
@@ -132,7 +132,7 @@ public class SystemAdminWorkAreaPanel extends javax.swing.JPanel {
                             .addComponent(btnManageEnterprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnManageNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnManageAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(497, Short.MAX_VALUE))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +147,7 @@ public class SystemAdminWorkAreaPanel extends javax.swing.JPanel {
                 .addComponent(btnManageEnterprise)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageAdmin)
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         jSplitPane.setRightComponent(jPanel2);
