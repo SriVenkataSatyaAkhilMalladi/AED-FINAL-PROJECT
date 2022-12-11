@@ -113,6 +113,9 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
             }
         });
 
+        tblDeliveryMan.setBackground(new java.awt.Color(255, 255, 153));
+        tblDeliveryMan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblDeliveryMan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblDeliveryMan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -121,6 +124,10 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
                 "Name", "UserName", "Password"
             }
         ));
+        tblDeliveryMan.setRowHeight(26);
+        tblDeliveryMan.setRowMargin(1);
+        tblDeliveryMan.setShowHorizontalLines(true);
+        tblDeliveryMan.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblDeliveryMan);
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
@@ -228,9 +235,9 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btnRegisterDeliveryMan)
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SearchResbtn))
@@ -240,7 +247,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
                     .addComponent(btnSave)
                     .addComponent(btnBack)
                     .addComponent(btnDelete))
-                .addGap(56, 56, 56))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

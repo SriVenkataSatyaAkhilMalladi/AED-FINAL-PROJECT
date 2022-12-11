@@ -91,7 +91,9 @@ public class DeliveryManAssignment extends javax.swing.JPanel {
             }
         });
 
-        tblDeliveryMan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblDeliveryMan.setBackground(new java.awt.Color(255, 255, 153));
+        tblDeliveryMan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblDeliveryMan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblDeliveryMan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -108,6 +110,10 @@ public class DeliveryManAssignment extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblDeliveryMan.setRowHeight(26);
+        tblDeliveryMan.setRowMargin(1);
+        tblDeliveryMan.setShowHorizontalLines(true);
+        tblDeliveryMan.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblDeliveryMan);
 
         SearchResbtn.setBackground(new java.awt.Color(0, 0, 0));
