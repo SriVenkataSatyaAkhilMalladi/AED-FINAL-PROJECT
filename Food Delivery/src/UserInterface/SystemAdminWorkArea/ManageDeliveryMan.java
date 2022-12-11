@@ -124,6 +124,12 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
             }
         });
 
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("UserName:");
 
         btnSave.setBackground(new java.awt.Color(0, 0, 0));
@@ -279,6 +285,14 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         txtUserName.setText("");
         txtPassword.setText("");
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

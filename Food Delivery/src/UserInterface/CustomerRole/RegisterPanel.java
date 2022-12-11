@@ -64,6 +64,12 @@ public class RegisterPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Password:");
 
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
+
         btnCreateCustomer.setBackground(new java.awt.Color(0, 0, 0));
         btnCreateCustomer.setForeground(new java.awt.Color(255, 255, 255));
         btnCreateCustomer.setText("Create Cusomer");
@@ -206,6 +212,14 @@ public class RegisterPanel extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_txtPhonenoKeyTyped
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
