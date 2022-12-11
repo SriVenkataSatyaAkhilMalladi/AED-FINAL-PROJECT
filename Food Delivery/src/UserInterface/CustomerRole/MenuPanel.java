@@ -342,14 +342,42 @@ public class MenuPanel extends javax.swing.JPanel {
 
     private void btnRemoveFromCart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveFromCart1ActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblCart1.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table to remove from cart","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            Dishes item=(Dishes)tblCart1.getValueAt(selectedRow, 0);
+            items.remove(item);
+            DefaultTableModel model = (DefaultTableModel) tblCart1.getModel();
+        model.setRowCount(0);
+           // commented no use
+                }
     }//GEN-LAST:event_btnRemoveFromCart1ActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
         // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CustomerAreaPanel cap = (CustomerAreaPanel) component;
+        cap.populateRequestTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButton1ActionPerformed
 
     private void btnAddToCart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCart1ActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblMenu1.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table to add","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            Dishes dishItem=(Dishes)tblMenu1.getValueAt(selectedRow, 0);
+            
+            populateCart(dishItem);
+          
+        }
     }//GEN-LAST:event_btnAddToCart1ActionPerformed
 
     private void SearchM1btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchM1btnActionPerformed
@@ -362,6 +390,14 @@ public class MenuPanel extends javax.swing.JPanel {
 
     private void btnOrder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrder1ActionPerformed
         // TODO add your handling code here:
+        String address=txtAddress1.getText();
+        restaurant.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
+        for(Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()){
+            if(userAccount.getUsername().equals(cust.getUserName())){
+                cust.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
+                JOptionPane.showMessageDialog(null, "You Order placed successfully");
+            }
+        } 
     }//GEN-LAST:event_btnOrder1ActionPerformed
 
     private void SearchM2btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchM2btnActionPerformed

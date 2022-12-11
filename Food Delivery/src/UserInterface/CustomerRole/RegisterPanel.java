@@ -12,6 +12,7 @@ import Business.Restaurant.RestaurantDirectory;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import UserInterface.MainFrame;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -240,6 +241,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         }
         else{
             JOptionPane.showMessageDialog(null, "Username is not unique");
+            return;
         }
 
         //sendConfirmationEmail(txtPhoneno.getText());
