@@ -107,6 +107,12 @@ public class ManageMenu extends javax.swing.JPanel {
 
         jLabel3.setText("Price:");
 
+        txtFoodName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFoodNameKeyTyped(evt);
+            }
+        });
+
         txtPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPriceActionPerformed(evt);
@@ -281,6 +287,14 @@ public class ManageMenu extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_txtPriceKeyTyped
+
+    private void txtFoodNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFoodNameKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtFoodNameKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

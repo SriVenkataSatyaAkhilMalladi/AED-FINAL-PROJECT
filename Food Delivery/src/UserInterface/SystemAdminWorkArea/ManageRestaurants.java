@@ -130,6 +130,12 @@ public class ManageRestaurants extends javax.swing.JPanel {
             }
         });
 
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
+
         btnRestrauntAdmin.setBackground(new java.awt.Color(0, 0, 0));
         btnRestrauntAdmin.setForeground(new java.awt.Color(255, 255, 255));
         btnRestrauntAdmin.setText("Restaurant Registration");
@@ -281,6 +287,14 @@ public class ManageRestaurants extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Username is not unique");
         }
     }//GEN-LAST:event_btnRestrauntAdminActionPerformed
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
