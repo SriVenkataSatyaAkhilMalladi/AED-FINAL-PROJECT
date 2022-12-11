@@ -120,4 +120,9 @@ public class CustomerDirectory {
         return c;
     }
     
+    public void updateCustomerInfo(Customer c, String name,String number,String address ){
+         c.setName(name);
+         c.setAddress(address);
+         c.setNumber(number);
+     }
 }
