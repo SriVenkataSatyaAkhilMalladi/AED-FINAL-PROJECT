@@ -124,13 +124,14 @@ public class MenuPanel extends javax.swing.JPanel {
         backJButton.setBackground(new java.awt.Color(0, 0, 0));
         backJButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         backJButton.setForeground(new java.awt.Color(255, 255, 255));
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.jpg"))); // NOI18N
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 60));
 
         valueLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         valueLabel.setText("<value>");
@@ -224,6 +225,10 @@ public class MenuPanel extends javax.swing.JPanel {
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
 
+        if(txtAddress.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please Enter your location");
+            return;
+        }
         String address=txtAddress.getText();
         restaurant.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
         for(Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()){

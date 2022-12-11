@@ -13,6 +13,7 @@ import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import UserInterface.CustomerRole.RegisterPanel;
 import UserInterface.RestaurantAdminRole.AdminWorkAreaPanel;
+import UserInterface.SystemAdminWorkArea.ManageCustomers;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,9 +35,12 @@ public class MainFrame extends javax.swing.JFrame {
     RestaurantDirectory restaurantDirectory; 
     CustomerDirectory customerDirectory;
     DeliveryManDirectory deliveryManDirectory;
+    JPanel userProcessContainer;
     
     public MainFrame() {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.system=system;
         system = dB4OUtil.retrieveSystem();
         setExtendedState(MainFrame.MAXIMIZED_BOTH);
         //this.setSize(1000, 650);
@@ -62,19 +66,19 @@ public class MainFrame extends javax.swing.JFrame {
         Passwordtxt = new javax.swing.JPasswordField();
         Loginbtn = new javax.swing.JButton();
         Logoutbtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Registerbtn = new javax.swing.JButton();
+        txtNewuser = new javax.swing.JLabel();
         Homebtn = new javax.swing.JButton();
         Refreshbtn = new javax.swing.JButton();
         Exitbtn = new javax.swing.JButton();
         jRightPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        WelcomePanel = new javax.swing.JPanel();
+        MainHeadinglbl = new javax.swing.JLabel();
+        Welcomelbl = new javax.swing.JLabel();
+        btn1ststep = new javax.swing.JButton();
+        btn2ndstep = new javax.swing.JButton();
+        btn3rdstep = new javax.swing.JButton();
+        btn4thstep = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,18 +111,18 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Register");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Registerbtn.setBackground(new java.awt.Color(0, 0, 0));
+        Registerbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Registerbtn.setForeground(new java.awt.Color(255, 255, 255));
+        Registerbtn.setText("Register");
+        Registerbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                RegisterbtnActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("NEW USER?");
+        txtNewuser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNewuser.setText("NEW USER?");
 
         Homebtn.setBackground(new java.awt.Color(0, 0, 0));
         Homebtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -163,16 +167,16 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(Loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Logoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Homebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
+                    .addComponent(Registerbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewuser)
                     .addComponent(Refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Exitbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 22, Short.MAX_VALUE))
         );
 
-        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Passwordlbl, jLabel1});
+        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Passwordlbl, txtNewuser});
 
-        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Homebtn, Loginbtn, Logoutbtn, jButton1});
+        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Homebtn, Loginbtn, Logoutbtn, Registerbtn});
 
         JLeftPanelLayout.setVerticalGroup(
             JLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,108 +195,108 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(Logoutbtn)
                 .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+                .addComponent(txtNewuser)
                 .addGap(6, 6, 6)
-                .addComponent(jButton1)
+                .addComponent(Registerbtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                 .addComponent(Refreshbtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Exitbtn))
         );
 
-        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Homebtn, Loginbtn, Logoutbtn, jButton1});
+        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Homebtn, Loginbtn, Logoutbtn, Registerbtn});
 
-        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Passwordlbl, jLabel1});
+        JLeftPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Passwordlbl, txtNewuser});
 
         jSplitPane.setLeftComponent(JLeftPanel);
 
         jRightPanel.setBackground(new java.awt.Color(255, 255, 153));
         jRightPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
+        WelcomePanel.setBackground(new java.awt.Color(255, 255, 153));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel2.setFont(new java.awt.Font("Onyx", 1, 90)); // NOI18N
-        jLabel2.setText("SHARE TO EAT");
+        MainHeadinglbl.setBackground(new java.awt.Color(255, 255, 153));
+        MainHeadinglbl.setFont(new java.awt.Font("Onyx", 1, 90)); // NOI18N
+        MainHeadinglbl.setText("SHARE TO EAT");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel3.setText("WELCOME");
+        Welcomelbl.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        Welcomelbl.setText("WELCOME");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn1ststep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4.png"))); // NOI18N
+        btn1ststep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn1ststepActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1.jpg"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn2ndstep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/1.jpg"))); // NOI18N
+        btn2ndstep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn2ndstepActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.jpg"))); // NOI18N
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn3rdstep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.jpg"))); // NOI18N
+        btn3rdstep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn3rdstepActionPerformed(evt);
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.jpg"))); // NOI18N
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btn4thstep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.jpg"))); // NOI18N
+        btn4thstep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btn4thstepActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout WelcomePanelLayout = new javax.swing.GroupLayout(WelcomePanel);
+        WelcomePanel.setLayout(WelcomePanelLayout);
+        WelcomePanelLayout.setHorizontalGroup(
+            WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WelcomePanelLayout.createSequentialGroup()
+                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(WelcomePanelLayout.createSequentialGroup()
                         .addGap(497, 497, 497)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(MainHeadinglbl))
+                    .addGroup(WelcomePanelLayout.createSequentialGroup()
                         .addGap(291, 291, 291)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn3rdstep)
+                            .addComponent(btn1ststep, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(180, 180, 180)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn4thstep)
+                            .addComponent(btn2ndstep, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(WelcomePanelLayout.createSequentialGroup()
                         .addGap(581, 581, 581)
-                        .addComponent(jLabel3)))
+                        .addComponent(Welcomelbl)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton3, jButton4, jButton5});
+        WelcomePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn1ststep, btn2ndstep, btn3rdstep, btn4thstep});
 
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        WelcomePanelLayout.setVerticalGroup(
+            WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WelcomePanelLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel2)
+                .addComponent(MainHeadinglbl)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(Welcomelbl)
                 .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn2ndstep, javax.swing.GroupLayout.PREFERRED_SIZE, 166, Short.MAX_VALUE)
+                    .addComponent(btn1ststep, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn3rdstep)
+                    .addComponent(btn4thstep))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, jButton3, jButton4, jButton5});
+        WelcomePanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn1ststep, btn2ndstep, btn3rdstep, btn4thstep});
 
-        jRightPanel.add(jPanel1, "card2");
+        jRightPanel.add(WelcomePanel, "card2");
 
         jSplitPane.setRightComponent(jRightPanel);
 
@@ -334,17 +338,19 @@ public class MainFrame extends javax.swing.JFrame {
         Passwordtxt.setText("");
 
         jRightPanel.removeAll();
-        JPanel blankJP = new JPanel();
-        jRightPanel.add("blank", blankJP);
-        CardLayout crdLyt = (CardLayout) jRightPanel.getLayout();
-        crdLyt.next(jRightPanel);
+        MainFrame mainframe = new MainFrame();
+        mainframe.show();
+        dispose();
     }//GEN-LAST:event_LogoutbtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void RegisterbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterbtnActionPerformed
         // TODO add your handling code here:
-        RegisterPanel rp = new RegisterPanel();
+        CardLayout layout = (CardLayout)jRightPanel.getLayout();
+        RegisterPanel rp = new RegisterPanel(userProcessContainer, system);
+        //userProcessContainer.add("RegisterPanel", rp);
+        //layout.next(userProcessContainer);
         jSplitPane.setRightComponent(rp);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_RegisterbtnActionPerformed
 
     private void HomebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomebtnActionPerformed
         // TODO add your handling code here:
@@ -363,26 +369,26 @@ public class MainFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_ExitbtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn1ststepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ststepActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "1) WELCOME TO OUR FOOD DELIVERY APPLICATION");
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn1ststepActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn2ndstepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ndstepActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "2) ADD DISHES AND ORDER");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn2ndstepActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn3rdstepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3rdstepActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "3) WAIT FOR YOUR FAST DELIVERY");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btn3rdstepActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btn4thstepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4thstepActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "4) HAVE A GOOD MEAL");
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btn4thstepActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,21 +432,21 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel JLeftPanel;
     private javax.swing.JButton Loginbtn;
     private javax.swing.JButton Logoutbtn;
+    private javax.swing.JLabel MainHeadinglbl;
     private javax.swing.JLabel Passwordlbl;
     private javax.swing.JPasswordField Passwordtxt;
     private javax.swing.JButton Refreshbtn;
+    private javax.swing.JButton Registerbtn;
     private javax.swing.JLabel Usernamelbl;
     private javax.swing.JTextField Usernametxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel WelcomePanel;
+    private javax.swing.JLabel Welcomelbl;
+    private javax.swing.JButton btn1ststep;
+    private javax.swing.JButton btn2ndstep;
+    private javax.swing.JButton btn3rdstep;
+    private javax.swing.JButton btn4thstep;
     private javax.swing.JPanel jRightPanel;
     private javax.swing.JSplitPane jSplitPane;
+    private javax.swing.JLabel txtNewuser;
     // End of variables declaration//GEN-END:variables
 }

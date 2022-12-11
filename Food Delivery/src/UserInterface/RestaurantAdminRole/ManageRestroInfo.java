@@ -117,6 +117,9 @@ public class ManageRestroInfo extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPhoneNumberKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberKeyTyped(evt);
+            }
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -258,24 +261,20 @@ public class ManageRestroInfo extends javax.swing.JPanel {
 
     private void txtAddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyReleased
         // TODO add your handling code here:
-        String PATTERN="^[a-zA-Z0-9]{0,200}$";
-        Pattern patt=Pattern.compile(PATTERN);
-        Matcher match=patt.matcher(txtAddress.getText());
-        if(!match.matches()){
-            lblAD.setText("Position Title is incorrect");
-        }
-        else{
-            lblAD.setText("");
-        } 
+         
     }//GEN-LAST:event_txtAddressKeyReleased
 
     private void txtRestaurantNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRestaurantNameKeyTyped
         // TODO add your handling code here:
+    }//GEN-LAST:event_txtRestaurantNameKeyTyped
+
+    private void txtPhoneNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyTyped
+        // TODO add your handling code here:
         char value = evt.getKeyChar();
-        if((!Character.isAlphabetic(value))){
+        if((!Character.isDigit(value))){
             evt.consume();
         }
-    }//GEN-LAST:event_txtRestaurantNameKeyTyped
+    }//GEN-LAST:event_txtPhoneNumberKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
