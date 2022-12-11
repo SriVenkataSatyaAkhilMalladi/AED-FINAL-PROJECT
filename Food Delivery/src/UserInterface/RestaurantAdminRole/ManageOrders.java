@@ -77,6 +77,8 @@ public class ManageOrders extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         btnViewOrder = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 102));
+
         btnAssignDeliveryMan.setBackground(new java.awt.Color(0, 0, 0));
         btnAssignDeliveryMan.setForeground(new java.awt.Color(255, 255, 255));
         btnAssignDeliveryMan.setText("Assign Delivery Man to Order");
@@ -137,34 +139,32 @@ public class ManageOrders extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBack)
-                .addContainerGap(776, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(btnViewOrder)
-                .addGap(69, 69, 69)
-                .addComponent(btnAssignDeliveryMan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRefresh)
-                .addGap(34, 34, 34))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnViewOrder)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnAssignDeliveryMan)
+                        .addGap(114, 114, 114)
+                        .addComponent(btnRefresh)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBack)
+                        .addGap(89, 89, 89))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addGap(59, 59, 59)
+                .addGap(120, 120, 120)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssignDeliveryMan)
                     .addComponent(btnViewOrder)
-                    .addComponent(btnRefresh))
-                .addContainerGap(317, Short.MAX_VALUE))
+                    .addComponent(btnRefresh)
+                    .addComponent(btnBack))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
