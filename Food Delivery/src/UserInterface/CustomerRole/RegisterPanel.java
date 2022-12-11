@@ -33,6 +33,7 @@ public class RegisterPanel extends javax.swing.JPanel {
     private RestaurantDirectory restaurantDirectory;
     private CustomerDirectory customerDirectory;
     private DeliveryManDirectory deliveryManDirectory;
+    int ph=0;
     public RegisterPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -191,6 +192,10 @@ public class RegisterPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "First name cannot have integer values");
             return;
         }
+        if(ph==0){
+            JOptionPane.showMessageDialog(null, "Phoneno is invalid");
+            return;
+        }
         
         String Phoneno = txtPhoneno.getText();
         flag = Phoneno.matches("^[0-9]+$");
@@ -226,7 +231,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         ArrayList<Order> o = new ArrayList();
         c.setOrderList(o);
         ecosystem.getCustomerDirectory().addCustomer(c);
-        UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(name,uname, pass,null, new CustomerRole());
+        //UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(name,uname, pass,null, new CustomerRole());
         JOptionPane.showMessageDialog(null, "Customer Profile Created");
         MainFrame mainframe = new MainFrame();
         mainframe.show();
@@ -260,6 +265,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         }
         else{
             lblPN.setText("");
+            ph=1;
         }
     }//GEN-LAST:event_txtPhonenoKeyReleased
 
