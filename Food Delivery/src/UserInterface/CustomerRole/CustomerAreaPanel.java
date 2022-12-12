@@ -5,16 +5,21 @@
 package UserInterface.CustomerRole;
 
 import Business.Customer.Customer;
+import Business.Database.DatabaseConnection;
 import Business.EcoSystem;
 import Business.Order.Order;
 import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -28,16 +33,35 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem ecosystem;
     private UserAccount account;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     public CustomerAreaPanel(JPanel userProcessContainer, UserAccount account,EcoSystem ecosystem) {
         initComponents();
+        con = DatabaseConnection.getCon();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.account = account;
         populateRequestTable();
         populatePreviousOrderTable();
+        //populateTable();
         lblCustomerID.setText(account.getUsername());
     }
 
+    public void populateTable()
+    {
+        try{
+            String sql = "select name,address,phoneno from fooddeliver.Restaurant";
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            tblRestaurant.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
      public void populateRequestTable(){
          DefaultTableModel tablemodel = (DefaultTableModel) tblRestaurant.getModel();
         
@@ -362,6 +386,7 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
 
         populateRequestTable();
         populatePreviousOrderTable();
+        populateTable();
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
     private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed

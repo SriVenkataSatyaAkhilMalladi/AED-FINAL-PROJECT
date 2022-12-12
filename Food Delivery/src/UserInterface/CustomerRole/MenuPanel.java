@@ -5,18 +5,23 @@
 package UserInterface.CustomerRole;
 
 import Business.Customer.Customer;
+import Business.Database.DatabaseConnection;
 import Business.EcoSystem;
 import Business.Restaurant.Dishes;
 import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.proteanit.sql.DbUtils;
 /**
  *
  * @author srikr
@@ -30,19 +35,39 @@ public class MenuPanel extends javax.swing.JPanel {
     private Restaurant restaurant;
     private UserAccount userAccount;
     private EcoSystem ecosystem;
+        Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     ArrayList<Dishes> items=new ArrayList<Dishes>();
     int ad=0;
     int sum = 0;
     public MenuPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem, Restaurant restaurant) {
         initComponents();
+        con = DatabaseConnection.getCon();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAccount = account;
         this.restaurant = restaurant;
-        
+        lblValue.setText(String.valueOf(sum));
+        //populateTable();
         populateMenuTable();
     }
 
+    public void populateTable()
+    {
+        try{
+            String sql = "select name,description,price from fooddeliver.Dishes where restaurant =?";
+            ps.setString(1, "mcd");
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            tblMenu1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
     public void populateMenuTable(){
          DefaultTableModel tablemodel = (DefaultTableModel) tblMenu1.getModel();
         
@@ -89,7 +114,7 @@ public class MenuPanel extends javax.swing.JPanel {
         tblMenu1 = new javax.swing.JTable();
         btnRemoveFromCart1 = new javax.swing.JButton();
         backJButton1 = new javax.swing.JButton();
-        valueLabel1 = new javax.swing.JLabel();
+        lblValue = new javax.swing.JLabel();
         txtSearchM1 = new javax.swing.JTextField();
         btnAddToCart1 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -169,8 +194,8 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
 
-        valueLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        valueLabel1.setText("<value>");
+        lblValue.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValue.setText("<value>");
 
         btnAddToCart1.setBackground(new java.awt.Color(0, 0, 0));
         btnAddToCart1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -275,7 +300,7 @@ public class MenuPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valueLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(txtSearchM2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,7 +328,7 @@ public class MenuPanel extends javax.swing.JPanel {
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valueLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,11 +464,11 @@ public class MenuPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblValue;
     private javax.swing.JTable tblCart1;
     private javax.swing.JTable tblMenu1;
     private javax.swing.JTextField txtAddress1;
     private javax.swing.JTextField txtSearchM1;
     private javax.swing.JTextField txtSearchM2;
-    private javax.swing.JLabel valueLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -111,6 +111,8 @@ public class UserAccountDirectory {
                 u.setName(rs.getString("name"));
                 u.setUsername(rs.getString("username"));
                 u.setPassword(rs.getString("password"));
+                //if(rs.getString("roletype").equals("RestaurantAdmin"))
+                //u.setRole();
                 ps1.setInt(1, uid);
                 ps2.setInt(1, uid);
                 if(rs1.next()){
