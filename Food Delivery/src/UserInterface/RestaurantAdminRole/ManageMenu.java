@@ -9,11 +9,12 @@ import Business.Restaurant.Dishes;
 import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -38,15 +39,34 @@ public class ManageMenu extends javax.swing.JPanel {
     }
 
     public void populateFoodCatalogue(){
-            DefaultTableModel tablemodel = (DefaultTableModel) tblMenuCatalogue.getModel();
-        
+        DefaultTableModel tablemodel = (DefaultTableModel) tblMenuCatalogue.getModel();
         tablemodel.setRowCount(0);
-        
-       
         for (Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()) {
-           
             if (restro.getUserName().equals(account.getUsername())) {
                 System.out.println("1");
+                if(!(restro.getMenu().isEmpty())){
+                    for(Dishes menu:restro.getMenu()){
+                    System.out.println("2");
+                    Object[] row = new Object[3];
+                    row[0] = menu.getName();
+                    row[1] = menu.getDescription();
+                    row[2] = menu.getPrice();
+                    tablemodel.addRow(row);
+               }
+                }
+               
+                
+            }
+            
+        }
+    }
+    public void populateFoodRemoveCatalogue(Dishes dishitem){
+        DefaultTableModel tablemodel = (DefaultTableModel) tblMenuCatalogue.getModel();
+        tablemodel.setRowCount(0);  
+        for (Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()) {
+            if (restro.getUserName().equals(account.getUsername())) {
+                System.out.println("1");
+                restro.removeFoodItem(dishitem);
                 if(!(restro.getMenu().isEmpty())){
                     for(Dishes menu:restro.getMenu()){
                     System.out.println("2");
@@ -87,7 +107,8 @@ public class ManageMenu extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMenuCatalogue = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
-        lblPR = new javax.swing.JLabel();
+        SearchResbtn = new javax.swing.JButton();
+        txtSearchRes = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,13 +123,22 @@ public class ManageMenu extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setBackground(new java.awt.Color(255, 255, 102));
+        setBackground(new java.awt.Color(255, 255, 153));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Food Name:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Food Description:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Price:");
+
+        txtFoodName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFoodNameKeyTyped(evt);
+            }
+        });
 
         txtPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,15 +146,16 @@ public class ManageMenu extends javax.swing.JPanel {
             }
         });
         txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPriceKeyReleased(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceKeyTyped(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Menu Catalogue");
 
         btnAddFoodItem.setBackground(new java.awt.Color(0, 0, 0));
+        btnAddFoodItem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAddFoodItem.setForeground(new java.awt.Color(255, 255, 255));
         btnAddFoodItem.setText("Add Food Item");
         btnAddFoodItem.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +165,7 @@ public class ManageMenu extends javax.swing.JPanel {
         });
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +174,9 @@ public class ManageMenu extends javax.swing.JPanel {
             }
         });
 
+        tblMenuCatalogue.setBackground(new java.awt.Color(255, 255, 153));
+        tblMenuCatalogue.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        tblMenuCatalogue.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblMenuCatalogue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -158,9 +193,14 @@ public class ManageMenu extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblMenuCatalogue.setRowHeight(26);
+        tblMenuCatalogue.setRowMargin(1);
+        tblMenuCatalogue.setShowHorizontalLines(true);
+        tblMenuCatalogue.setShowVerticalLines(true);
         jScrollPane2.setViewportView(tblMenuCatalogue);
 
         btnDelete.setBackground(new java.awt.Color(0, 0, 0));
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -169,46 +209,57 @@ public class ManageMenu extends javax.swing.JPanel {
             }
         });
 
+        SearchResbtn.setBackground(new java.awt.Color(0, 0, 0));
+        SearchResbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        SearchResbtn.setForeground(new java.awt.Color(255, 255, 255));
+        SearchResbtn.setText("Search");
+        SearchResbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchResbtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(320, 320, 320)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(349, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(337, 337, 337)
-                .addComponent(btnAddFoodItem)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFoodDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPR, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132))
+                        .addGap(320, 320, 320)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(63, 63, 63)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFoodDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(332, 332, 332)
+                        .addComponent(btnAddFoodItem))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(320, 320, 320)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchResbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnDelete)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBack))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -222,17 +273,20 @@ public class ManageMenu extends javax.swing.JPanel {
                             .addComponent(txtFoodDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3))
-                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPR, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnAddFoodItem)
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchResbtn))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
                     .addComponent(btnBack))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -242,11 +296,18 @@ public class ManageMenu extends javax.swing.JPanel {
 
     private void btnAddFoodItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFoodItemActionPerformed
         // TODO add your handling code here:
+        if(txtFoodName.getText().isEmpty() || txtFoodDescription.getText().isEmpty()||txtPrice.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter all the details");
+            return;
+        }
         for(Restaurant restro : ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
             if(restro.getUserName().equals(account.getUsername())){
                 menu = ecosystem.getRestaurantDirectory().AddMenuDishes(restro, txtFoodName.getText(), txtFoodDescription.getText(), txtPrice.getText());
             }
         }
+        txtFoodName.setText("");
+        txtFoodDescription.setText("");
+        txtPrice.setText("");
 
         populateFoodCatalogue();
 
@@ -270,10 +331,14 @@ public class ManageMenu extends javax.swing.JPanel {
 
                 for(Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
                     if(restro.getUserName().equals(account.getUsername())){
-                        ecosystem.getRestaurantDirectory().DeleteDishes(restro, menu);
+                        //String fn= (String) tblMenuCatalogue.getValueAt(selectedRow, 0);
+                        //String des= (String) tblMenuCatalogue.getValueAt(selectedRow, 1);
+                        //String price= (String) tblMenuCatalogue.getValueAt(selectedRow, 2);
+                        Dishes item=(Dishes)tblMenuCatalogue.getValueAt(selectedRow, 0);
+                        populateFoodRemoveCatalogue(item);
                     }
                 }
-                populateFoodCatalogue();
+                
             }
         }else{
             JOptionPane.showMessageDialog(null, "Please select a row to proceed for deletion");
@@ -281,21 +346,33 @@ public class ManageMenu extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void txtPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyReleased
+    private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
         // TODO add your handling code here:
-                String PATTERN="^[0-9]{0,15}$";
-        Pattern patt=Pattern.compile(PATTERN);
-        Matcher match=patt.matcher(txtPrice.getText());
-        if(!match.matches()){
-            lblPR.setText("Price is incorrect");
+        char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
         }
-        else{
-            lblPR.setText("");
-        }        
-    }//GEN-LAST:event_txtPriceKeyReleased
+    }//GEN-LAST:event_txtPriceKeyTyped
+
+    private void txtFoodNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFoodNameKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtFoodNameKeyTyped
+
+    private void SearchResbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchResbtnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblMenuCatalogue.getModel();
+        TableRowSorter<DefaultTableModel> tm = new TableRowSorter<>(model);
+        tblMenuCatalogue.setRowSorter(tm);
+        tm.setRowFilter(RowFilter.regexFilter(txtSearchRes.getText().trim()));
+    }//GEN-LAST:event_SearchResbtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SearchResbtn;
     private javax.swing.JButton btnAddFoodItem;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
@@ -306,10 +383,10 @@ public class ManageMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblPR;
     private javax.swing.JTable tblMenuCatalogue;
     private javax.swing.JTextField txtFoodDescription;
     private javax.swing.JTextField txtFoodName;
     private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtSearchRes;
     // End of variables declaration//GEN-END:variables
 }

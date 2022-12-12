@@ -10,7 +10,9 @@ import Business.Order.Order;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -70,9 +72,15 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
         processJButton = new javax.swing.JButton();
         refreshJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtSearchRes = new javax.swing.JTextField();
+        SearchResbtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblOrderDetails.setBackground(new java.awt.Color(255, 255, 153));
+        tblOrderDetails.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblOrderDetails.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblOrderDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -96,11 +104,16 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblOrderDetails.setRowHeight(26);
+        tblOrderDetails.setRowMargin(1);
+        tblOrderDetails.setShowHorizontalLines(true);
+        tblOrderDetails.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblOrderDetails);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 650, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 650, 96));
 
         processJButton.setBackground(new java.awt.Color(0, 0, 0));
+        processJButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         processJButton.setForeground(new java.awt.Color(255, 255, 255));
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -108,9 +121,10 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, -1, -1));
 
         refreshJButton.setBackground(new java.awt.Color(0, 0, 0));
+        refreshJButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshJButton.setForeground(new java.awt.Color(255, 255, 255));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -118,10 +132,23 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
                 refreshJButtonActionPerformed(evt);
             }
         });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Order Detail");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
+        add(txtSearchRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 120, -1));
+
+        SearchResbtn.setBackground(new java.awt.Color(0, 0, 0));
+        SearchResbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        SearchResbtn.setForeground(new java.awt.Color(255, 255, 255));
+        SearchResbtn.setText("Search");
+        SearchResbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchResbtnActionPerformed(evt);
+            }
+        });
+        add(SearchResbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
@@ -143,12 +170,22 @@ public class DeliveryManWorkAreaPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_refreshJButtonActionPerformed
 
+    private void SearchResbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchResbtnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblOrderDetails.getModel();
+        TableRowSorter<DefaultTableModel> tm = new TableRowSorter<>(model);
+        tblOrderDetails.setRowSorter(tm);
+        tm.setRowFilter(RowFilter.regexFilter(txtSearchRes.getText().trim()));
+    }//GEN-LAST:event_SearchResbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SearchResbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JTable tblOrderDetails;
+    private javax.swing.JTextField txtSearchRes;
     // End of variables declaration//GEN-END:variables
 }

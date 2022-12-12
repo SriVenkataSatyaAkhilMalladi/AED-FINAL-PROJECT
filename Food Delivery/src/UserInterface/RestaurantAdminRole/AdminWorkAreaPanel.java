@@ -46,18 +46,19 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
         btnManageMenu = new javax.swing.JButton();
         btnManageRestroInfo = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 102));
+        setBackground(new java.awt.Color(255, 255, 153));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("My Work Area -Adminstrative Role");
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         enterpriseLabel.setText("Restaurant :");
 
-        lblRestName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblRestName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblRestName.setText("<value>");
 
         btnManageOrder.setBackground(new java.awt.Color(0, 0, 0));
+        btnManageOrder.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnManageOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnManageOrder.setText("Manage Orders");
         btnManageOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +68,7 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
         });
 
         btnManageMenu.setBackground(new java.awt.Color(0, 0, 0));
+        btnManageMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnManageMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnManageMenu.setText("Manage menu");
         btnManageMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +78,7 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
         });
 
         btnManageRestroInfo.setBackground(new java.awt.Color(0, 0, 0));
+        btnManageRestroInfo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnManageRestroInfo.setForeground(new java.awt.Color(255, 255, 255));
         btnManageRestroInfo.setText("Manage Restaurant Info");
         btnManageRestroInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -89,41 +92,41 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(212, 212, 212)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(lblRestName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(227, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(360, 360, 360)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnManageOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnManageMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageRestroInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(264, 264, 264))
+                    .addComponent(btnManageRestroInfo)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(enterpriseLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblRestName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageMenu, btnManageOrder, btnManageRestroInfo});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblRestName)))
-                .addGap(42, 42, 42)
+                    .addComponent(lblRestName))
+                .addGap(30, 30, 30)
                 .addComponent(btnManageOrder)
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addComponent(btnManageMenu)
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addComponent(btnManageRestroInfo)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageMenu, btnManageOrder, btnManageRestroInfo});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageOrderActionPerformed

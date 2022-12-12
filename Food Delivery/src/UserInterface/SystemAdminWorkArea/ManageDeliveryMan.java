@@ -11,7 +11,9 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -75,8 +77,14 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        SearchResbtn = new javax.swing.JButton();
+        txtSearchRes = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(255, 255, 153));
 
         btnRegisterDeliveryMan.setBackground(new java.awt.Color(0, 0, 0));
+        btnRegisterDeliveryMan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegisterDeliveryMan.setForeground(new java.awt.Color(255, 255, 255));
         btnRegisterDeliveryMan.setText("Register DeliveryMan");
         btnRegisterDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +94,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         });
 
         btnDelete.setBackground(new java.awt.Color(0, 0, 0));
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +104,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         });
 
         btnUpdate.setBackground(new java.awt.Color(0, 0, 0));
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +113,9 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
             }
         });
 
+        tblDeliveryMan.setBackground(new java.awt.Color(255, 255, 153));
+        tblDeliveryMan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblDeliveryMan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblDeliveryMan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -111,9 +124,14 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
                 "Name", "UserName", "Password"
             }
         ));
+        tblDeliveryMan.setRowHeight(26);
+        tblDeliveryMan.setRowMargin(1);
+        tblDeliveryMan.setShowHorizontalLines(true);
+        tblDeliveryMan.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblDeliveryMan);
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -122,9 +140,17 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
             }
         });
 
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("UserName:");
 
         btnSave.setBackground(new java.awt.Color(0, 0, 0));
+        btnSave.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -133,9 +159,24 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Name:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Password:");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setText("Delivery Man Management");
+
+        SearchResbtn.setBackground(new java.awt.Color(0, 0, 0));
+        SearchResbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        SearchResbtn.setForeground(new java.awt.Color(255, 255, 255));
+        SearchResbtn.setText("Search");
+        SearchResbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchResbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -144,64 +185,69 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack)
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(73, 73, 73)
+                        .addGap(360, 360, 360)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtName)
-                            .addComponent(txtUserName)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(btnUpdate)
-                                .addGap(56, 56, 56)
-                                .addComponent(btnDelete)
-                                .addGap(76, 76, 76)
-                                .addComponent(btnSave))
+                                .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchResbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(203, 203, 203)
-                                .addComponent(btnRegisterDeliveryMan)))))
-                .addContainerGap(358, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(73, 73, 73)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtName)
+                                    .addComponent(txtUserName)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnRegisterDeliveryMan)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnUpdate)
+                                .addGap(47, 47, 47)
+                                .addComponent(btnSave)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnDelete)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnBack))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(450, 450, 450)
+                        .addComponent(jLabel4)))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack)))
-                .addGap(26, 26, 26)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(btnRegisterDeliveryMan)
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchResbtn))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnSave))
-                .addContainerGap(226, Short.MAX_VALUE))
+                    .addComponent(btnSave)
+                    .addComponent(btnBack)
+                    .addComponent(btnDelete))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -282,8 +328,25 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         txtPassword.setText("");
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void SearchResbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchResbtnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryMan.getModel();
+        TableRowSorter<DefaultTableModel> tm = new TableRowSorter<>(model);
+        tblDeliveryMan.setRowSorter(tm);
+        tm.setRowFilter(RowFilter.regexFilter(txtSearchRes.getText().trim()));
+    }//GEN-LAST:event_SearchResbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SearchResbtn;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRegisterDeliveryMan;
@@ -292,10 +355,12 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDeliveryMan;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtSearchRes;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

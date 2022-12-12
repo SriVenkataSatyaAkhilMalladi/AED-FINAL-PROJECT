@@ -15,7 +15,7 @@ import java.nio.file.Paths;
  */
 public class DB4OUtil {
 
-    private static final String FILENAME = Paths.get("Databank1.db4o").toAbsolutePath().toString();// path to the data store
+    private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();// path to the data store
     private static DB4OUtil dB4OUtil;
     
     public synchronized static DB4OUtil getInstance(){
@@ -33,7 +33,12 @@ public class DB4OUtil {
 
     private ObjectContainer createConnection() {
         try {
-            ObjectContainer db = Db4oEmbedded.openFile(FILENAME);
+            EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+            ObjectContainer db = Db4oEmbedded.openFile(config,FILENAME);
+            config.common().add(new TransparentPersistenceSupport());
+            config.common().activationDepth(Integer.MAX_VALUE);
+            config.common().updateDepth(Integer.MAX_VALUE);
+            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true);
             return db;
         } catch (Exception ex) {
             System.out.print(ex.getMessage());

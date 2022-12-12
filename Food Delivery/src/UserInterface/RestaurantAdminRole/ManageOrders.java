@@ -11,7 +11,9 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -76,10 +78,14 @@ public class ManageOrders extends javax.swing.JPanel {
         tblOrderDetail = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
         btnViewOrder = new javax.swing.JButton();
+        txtSearchRes = new javax.swing.JTextField();
+        SearchResbtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 102));
+        setBackground(new java.awt.Color(255, 255, 153));
 
         btnAssignDeliveryMan.setBackground(new java.awt.Color(0, 0, 0));
+        btnAssignDeliveryMan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAssignDeliveryMan.setForeground(new java.awt.Color(255, 255, 255));
         btnAssignDeliveryMan.setText("Assign Delivery Man to Order");
         btnAssignDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +95,7 @@ public class ManageOrders extends javax.swing.JPanel {
         });
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +104,9 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
+        tblOrderDetail.setBackground(new java.awt.Color(255, 255, 153));
+        tblOrderDetail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        tblOrderDetail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tblOrderDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -113,9 +123,14 @@ public class ManageOrders extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblOrderDetail.setRowHeight(26);
+        tblOrderDetail.setRowMargin(1);
+        tblOrderDetail.setShowHorizontalLines(true);
+        tblOrderDetail.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblOrderDetail);
 
         btnRefresh.setBackground(new java.awt.Color(0, 0, 0));
+        btnRefresh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +140,7 @@ public class ManageOrders extends javax.swing.JPanel {
         });
 
         btnViewOrder.setBackground(new java.awt.Color(0, 0, 0));
+        btnViewOrder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnViewOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnViewOrder.setText("View Order");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -133,38 +149,64 @@ public class ManageOrders extends javax.swing.JPanel {
             }
         });
 
+        SearchResbtn.setBackground(new java.awt.Color(0, 0, 0));
+        SearchResbtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        SearchResbtn.setForeground(new java.awt.Color(255, 255, 255));
+        SearchResbtn.setText("Search");
+        SearchResbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchResbtnActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Manage Orders");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addGap(280, 280, 280)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnViewOrder)
+                                .addGap(50, 50, 50)
+                                .addComponent(btnAssignDeliveryMan)
+                                .addGap(50, 50, 50)
+                                .addComponent(btnRefresh)
+                                .addGap(50, 50, 50)
+                                .addComponent(btnBack))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchResbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnViewOrder)
-                        .addGap(69, 69, 69)
-                        .addComponent(btnAssignDeliveryMan)
-                        .addGap(114, 114, 114)
-                        .addComponent(btnRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack)
-                        .addGap(89, 89, 89))))
+                        .addGap(380, 380, 380)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(66, 66, 66)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearchRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchResbtn))
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssignDeliveryMan)
                     .addComponent(btnViewOrder)
                     .addComponent(btnRefresh)
                     .addComponent(btnBack))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -212,13 +254,24 @@ public class ManageOrders extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnViewOrderActionPerformed
 
+    private void SearchResbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchResbtnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblOrderDetail.getModel();
+        TableRowSorter<DefaultTableModel> tm = new TableRowSorter<>(model);
+        tblOrderDetail.setRowSorter(tm);
+        tm.setRowFilter(RowFilter.regexFilter(txtSearchRes.getText().trim()));
+    }//GEN-LAST:event_SearchResbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SearchResbtn;
     private javax.swing.JButton btnAssignDeliveryMan;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewOrder;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblOrderDetail;
+    private javax.swing.JTextField txtSearchRes;
     // End of variables declaration//GEN-END:variables
 }
