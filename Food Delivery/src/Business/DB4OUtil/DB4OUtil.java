@@ -13,6 +13,7 @@ import java.nio.file.Paths;
  *
  * @author srikr
  */
+
 public class DB4OUtil {
 
     private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();// path to the data store
@@ -33,6 +34,7 @@ public class DB4OUtil {
 
     private ObjectContainer createConnection() {
         try {
+            //accessDb4o();
             EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
             ObjectContainer db = Db4oEmbedded.openFile(config,FILENAME);
             config.common().add(new TransparentPersistenceSupport());

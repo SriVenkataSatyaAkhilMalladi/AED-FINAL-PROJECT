@@ -12,16 +12,24 @@ import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
 /**
  *
  * @author srikr
@@ -41,6 +49,11 @@ public class MenuPanel extends javax.swing.JPanel {
     ArrayList<Dishes> items=new ArrayList<Dishes>();
     int ad=0;
     int sum = 0;
+    int id=0;
+    String Query;
+    String roomType;
+    String bedType;
+    String roomno;
     public MenuPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem, Restaurant restaurant) {
         initComponents();
         con = DatabaseConnection.getCon();
@@ -51,6 +64,7 @@ public class MenuPanel extends javax.swing.JPanel {
         lblValue.setText(String.valueOf(sum));
         //populateTable();
         populateMenuTable();
+        lblCustomerID.setText(account.getUsername());
     }
 
     public void populateTable()
@@ -129,6 +143,7 @@ public class MenuPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        lblCustomerID = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -273,13 +288,17 @@ public class MenuPanel extends javax.swing.JPanel {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/food3.jpg"))); // NOI18N
 
+        lblCustomerID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCustomerID.setText("<username>");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(backJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCustomerID))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -319,12 +338,14 @@ public class MenuPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(backJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCustomerID))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -429,13 +450,82 @@ public class MenuPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please Enter the Delivery Address");
             return;
         }
+        String cname = lblCustomerID.getText();
+        String caddr= null;
+        String cphoneno= null;
+        String rname= null;
+        String raddr= null;
+        String rphoneno= null;
+        int cart=0;
         restaurant.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
         for(Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()){
             if(userAccount.getUsername().equals(cust.getUserName())){
+                cname=cust.getName();
+                caddr=cust.getAddress();
+                cphoneno=cust.getNumber();
+                rname=restaurant.getName();
+                raddr=restaurant.getAddress();
+                rphoneno=restaurant.getNumber();
+                cart=sum;
                 cust.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
                 JOptionPane.showMessageDialog(null, "You Order placed successfully");
             }
         } 
+        
+        cname = lblCustomerID.getText();
+        
+        String path="";    
+        JFileChooser j =new JFileChooser();
+        j.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        int x= j.showSaveDialog(this);
+        if(x==JFileChooser.APPROVE_OPTION){
+            path=j.getSelectedFile().getPath();
+        }
+        
+        Document doc = new Document();
+        //com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
+        try{
+            
+            PdfWriter.getInstance(doc, new FileOutputStream(path+""+id+".pdf"));
+            doc.open();
+            Paragraph paragraph1 =  new Paragraph("                                             Share To Eat                                   ");
+            doc.add(paragraph1);
+            Paragraph paragraph2 =  new Paragraph("*************************************************************************************************");
+            doc.add(paragraph2);
+            Paragraph paragraph3 =  new Paragraph("Customer Details:\nCustomer Name: \t\t"+cname/*+"\nAddress:"+caddr+"\nMobile Number:"+cphoneno*/);
+            doc.add(paragraph3);
+            Paragraph paragraph4 =  new Paragraph("Restaurant Details:\nRestaurant Name: \t\t"+rname+"\nAddress: \t\t"+raddr+"\nMobile Number: \t\t"+rphoneno);
+            doc.add(paragraph4);
+            doc.add(paragraph2);
+            PdfPTable tbl = new PdfPTable(1);
+            tbl.addCell("Total Amount Paid: \t\t"+cart);
+            doc.add(tbl);
+            doc.add(paragraph2);
+            Paragraph paragraph5 =  new Paragraph("                                       Thank You, Please Order Again.                               ");
+            doc.add(paragraph5);
+            
+            
+        }catch(Exception e){
+            //Logger.getLogger(pdfGenerator.class.getName()).log(Level.SEVERE,null,e);
+            JOptionPane.showMessageDialog(null, e);
+        }
+        doc.close();
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to print the invoice?","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            try{
+                if(new File(path+""+id+".pdf").exists()){
+                    Process p = Runtime
+                            .getRuntime()
+                            .exec("rundll32 url.dll,FileProtocolHandler "+path+""+id+".pdf");
+                }else{
+                        System.out.println("File doesnt exist");
+                        }
+            }
+                catch(Exception e){
+                        JOptionPane.showMessageDialog(null, e);
+                        }
+            }
+        
     }//GEN-LAST:event_btnOrder1ActionPerformed
 
     private void SearchM2btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchM2btnActionPerformed
@@ -464,6 +554,7 @@ public class MenuPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCustomerID;
     private javax.swing.JLabel lblValue;
     private javax.swing.JTable tblCart1;
     private javax.swing.JTable tblMenu1;
