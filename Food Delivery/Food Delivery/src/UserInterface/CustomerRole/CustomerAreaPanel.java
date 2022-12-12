@@ -82,17 +82,20 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
     public void populatePreviousOrderTable(){
         DefaultTableModel tablemodel = (DefaultTableModel) tblPreviousOrders.getModel();
         tablemodel.setRowCount(0);
-         
+         int i=0;
         for (Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()) {
            if (cust.getUserName().equals(account.getUsername())) {
                // System.out.println(restro.getOrderList());
                for(Order menu:cust.getOrderList()){
-                Object[] row = new Object[4];
-                row[0] = menu;
-                row[1] = menu.getRestaurantName();
-                row[2] = menu.getPrice();
-                row[3] = menu.getStatus();
-                tablemodel.addRow(row);
+                   if(i%2==0){
+                        Object[] row = new Object[4];
+                        row[0] = menu;
+                        row[1] = menu.getRestaurantName();
+                        row[2] = menu.getPrice();
+                        row[3] = menu.getStatus();
+                        tablemodel.addRow(row);
+                   }
+                    i++;
                }
                 
             }
