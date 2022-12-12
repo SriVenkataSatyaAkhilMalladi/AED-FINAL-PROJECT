@@ -20,7 +20,7 @@ The project we have designed is a food delivered system. This application can be
 The application has been developed on NetBeans IDE. It’s a Java Swing application. The application has been augmented with fields that are required for performing the functional requirements of the project.
 MySQL database has been used to store the data so that the data is not lost after exiting the application. A robust role-based authentication module with strong username and password capabilities has been used. Exception handling is properly done to deal with any kind of exception.
 
-                                                                         ABSTRACT
+                                                                ABSTRACT
 
 The endeavor to develop an online food ordering system aims to replace the manual method of taking orders with a computerized one. We are planning to implement a food delivery application which will connect the Restaurants to Customers and Delivery Drivers. Where any user can create their profile and browse through all the restaurants and their menus, and they can order the through our application. Then the restaurant will be notified about the order, and they also can assign a delivery driver to the order as well.
 
