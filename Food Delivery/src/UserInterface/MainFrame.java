@@ -6,9 +6,11 @@ package UserInterface;
 
 import Business.Customer.CustomerDirectory;
 import Business.DB4OUtil.DB4OUtil;
+import Business.Database.DatabaseConnection;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.EcoSystem;
 import Business.Restaurant.RestaurantDirectory;
+import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import UserInterface.AboutUs.AboutUsPanel;
@@ -17,6 +19,9 @@ import UserInterface.RestaurantAdminRole.AdminWorkAreaPanel;
 import UserInterface.SystemAdminWorkArea.ManageCustomers;
 import java.awt.CardLayout;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -39,11 +44,16 @@ public class MainFrame extends javax.swing.JFrame {
     CustomerDirectory customerDirectory;
     DeliveryManDirectory deliveryManDirectory;
     JPanel userProcessContainer;
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
     
     public MainFrame() {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.system=system;
+        
+        con = DatabaseConnection.getCon();
         system = dB4OUtil.retrieveSystem();
         setExtendedState(MainFrame.MAXIMIZED_BOTH);
         //this.setSize(1000, 650);
