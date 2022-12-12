@@ -450,6 +450,10 @@ public class MenuPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please Enter the Delivery Address");
             return;
         }
+        sum=0;
+        for(Dishes dish:items){
+                     sum=sum+Integer.parseInt(dish.getPrice());
+        }
         String cname = lblCustomerID.getText();
         String caddr= null;
         String cphoneno= null;
@@ -470,10 +474,7 @@ public class MenuPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "You Order placed successfully");
             }
         } 
-        sum=0;
-        for(Dishes dish:items){
-                     sum=sum+Integer.parseInt(dish.getPrice());
-        }
+        
         String Value=String.valueOf(sum);
         lblValue.setText(Value);
         cart=sum;//-(int)tblCart1.getValueAt(1, 2);
