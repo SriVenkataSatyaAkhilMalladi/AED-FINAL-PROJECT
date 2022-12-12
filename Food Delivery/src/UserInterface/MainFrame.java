@@ -229,7 +229,7 @@ public class MainFrame extends javax.swing.JFrame {
         MainHeadinglbl.setFont(new java.awt.Font("Onyx", 1, 90)); // NOI18N
         MainHeadinglbl.setText("SHARE TO EAT");
 
-        backroundbtn.setIcon(new javax.swing.ImageIcon("C:\\7srik\\files\\DOCS for MS\\NEU\\Courses and other related\\1st sem\\AED\\Project\\Main Project Food Delivery System\\Food Delivery\\src\\Images\\4.png")); // NOI18N
+        backroundbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4.png"))); // NOI18N
         backroundbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backroundbtnActionPerformed(evt);
@@ -253,14 +253,16 @@ public class MainFrame extends javax.swing.JFrame {
         WelcomePanel.setLayout(WelcomePanelLayout);
         WelcomePanelLayout.setHorizontalGroup(
             WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backroundbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 1926, Short.MAX_VALUE)
             .addGroup(WelcomePanelLayout.createSequentialGroup()
-                .addGap(550, 550, 550)
-                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(MainHeadinglbl)
-                    .addComponent(Welcomelbl))
-                .addGap(359, 359, 359)
-                .addComponent(Aboutbtn)
+                .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backroundbtn)
+                    .addGroup(WelcomePanelLayout.createSequentialGroup()
+                        .addGap(550, 550, 550)
+                        .addGroup(WelcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(MainHeadinglbl)
+                            .addComponent(Welcomelbl))
+                        .addGap(359, 359, 359)
+                        .addComponent(Aboutbtn)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         WelcomePanelLayout.setVerticalGroup(
