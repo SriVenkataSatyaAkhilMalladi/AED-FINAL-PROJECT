@@ -31,6 +31,7 @@ public class MenuPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private EcoSystem ecosystem;
     ArrayList<Dishes> items=new ArrayList<Dishes>();
+    int ad=0;
     int sum = 0;
     public MenuPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem, Restaurant restaurant) {
         initComponents();
@@ -58,8 +59,10 @@ public class MenuPanel extends javax.swing.JPanel {
     public void populateCart(Dishes dishitem){
         DefaultTableModel tablemodel = (DefaultTableModel) tblCart1.getModel();
         tablemodel.setRowCount(0);
-        
-         items.add(dishitem);
+        if(ad==1){
+        items.add(dishitem);
+        }else
+        items.remove(dishitem);
          Object[] row = new Object[3];
                 for(Dishes dish:items){
                      row[0] = dish;
@@ -205,7 +208,7 @@ public class MenuPanel extends javax.swing.JPanel {
         jScrollPane5.setViewportView(tblCart1);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Location:");
+        jLabel2.setText("Delivery Address:");
 
         SearchM1btn.setBackground(new java.awt.Color(0, 0, 0));
         SearchM1btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -282,11 +285,11 @@ public class MenuPanel extends javax.swing.JPanel {
                             .addComponent(btnRemoveFromCart1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnOrder1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,7 +319,7 @@ public class MenuPanel extends javax.swing.JPanel {
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -325,11 +328,13 @@ public class MenuPanel extends javax.swing.JPanel {
                                     .addComponent(SearchM2btn)
                                     .addComponent(btnRemoveFromCart1))
                                 .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(30, 30, 30)
+                                    .addComponent(txtAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(30, 30, 30)))
                         .addComponent(btnOrder1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
@@ -338,6 +343,9 @@ public class MenuPanel extends javax.swing.JPanel {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAddress1, txtSearchM2});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRemoveFromCart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveFromCart1ActionPerformed
@@ -348,11 +356,11 @@ public class MenuPanel extends javax.swing.JPanel {
         }
         else{
             Dishes item=(Dishes)tblCart1.getValueAt(selectedRow, 0);
-            items.remove(item);
-            DefaultTableModel model = (DefaultTableModel) tblCart1.getModel();
-        model.setRowCount(0);
+            ad=0;
+            populateCart(item);
+        //model.setRowCount(0);
            // commented no use
-                }
+            }
     }//GEN-LAST:event_btnRemoveFromCart1ActionPerformed
 
     private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
@@ -374,6 +382,7 @@ public class MenuPanel extends javax.swing.JPanel {
         }
         else{
             Dishes dishItem=(Dishes)tblMenu1.getValueAt(selectedRow, 0);
+            ad=1;
             
             populateCart(dishItem);
           
@@ -391,6 +400,10 @@ public class MenuPanel extends javax.swing.JPanel {
     private void btnOrder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrder1ActionPerformed
         // TODO add your handling code here:
         String address=txtAddress1.getText();
+        if(address.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please Enter the Delivery Address");
+            return;
+        }
         restaurant.addOrder(restaurant.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
         for(Customer cust:ecosystem.getCustomerDirectory().getCustomerDirectory()){
             if(userAccount.getUsername().equals(cust.getUserName())){

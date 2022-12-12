@@ -9,6 +9,7 @@ import Business.Restaurant.Dishes;
 import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
@@ -27,24 +28,22 @@ public class ManageMenu extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount account;
     private EcoSystem ecosystem;
+    private Restaurant restaurant;
     private Dishes menu;
-    public ManageMenu(JPanel userProcessContainer,UserAccount account, EcoSystem ecosystem) {
+    public ManageMenu(JPanel userProcessContainer,UserAccount account, EcoSystem ecosystem,Restaurant restaurant) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.ecosystem = ecosystem;
+        this.restaurant = restaurant;
         
         populateFoodCatalogue();
     }
 
     public void populateFoodCatalogue(){
-            DefaultTableModel tablemodel = (DefaultTableModel) tblMenuCatalogue.getModel();
-        
+        DefaultTableModel tablemodel = (DefaultTableModel) tblMenuCatalogue.getModel();
         tablemodel.setRowCount(0);
-        
-       
         for (Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()) {
-           
             if (restro.getUserName().equals(account.getUsername())) {
                 System.out.println("1");
                 if(!(restro.getMenu().isEmpty())){
@@ -63,6 +62,29 @@ public class ManageMenu extends javax.swing.JPanel {
             
         }
     }
+    /*public void populateFoodRemoveCatalogue(Dishes dishitem){
+        DefaultTableModel tablemodel = (DefaultTableModel) tblMenuCatalogue.getModel();
+        tablemodel.setRowCount(0);  
+        for (Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()) {
+            if (restro.getUserName().equals(account.getUsername())) {
+                System.out.println("1");
+                ecosystem.getRestaurantDirectory().DeleteDishes(restro, dishitem);
+                if(!(restro.getMenu().isEmpty())){
+                    for(Dishes menu:restro.getMenu()){
+                    System.out.println("2");
+                    Object[] row = new Object[3];
+                    row[0] = menu.getName();
+                    row[1] = menu.getDescription();
+                    row[2] = menu.getPrice();
+                    tablemodel.addRow(row);
+               }
+                }
+               
+                
+            }
+            
+        }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -276,11 +298,18 @@ public class ManageMenu extends javax.swing.JPanel {
 
     private void btnAddFoodItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFoodItemActionPerformed
         // TODO add your handling code here:
+        if(txtFoodName.getText().isEmpty() || txtFoodDescription.getText().isEmpty()||txtPrice.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter all the details");
+            return;
+        }
         for(Restaurant restro : ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
             if(restro.getUserName().equals(account.getUsername())){
                 menu = ecosystem.getRestaurantDirectory().AddMenuDishes(restro, txtFoodName.getText(), txtFoodDescription.getText(), txtPrice.getText());
             }
         }
+        txtFoodName.setText("");
+        txtFoodDescription.setText("");
+        txtPrice.setText("");
 
         populateFoodCatalogue();
 
@@ -302,12 +331,19 @@ public class ManageMenu extends javax.swing.JPanel {
             int selectionResult = JOptionPane.showConfirmDialog(null, "Confirm delete??","Warning",selectionButton);
             if(selectionResult == JOptionPane.YES_OPTION){
 
+                //Dishes item=(Dishes)tblMenuCatalogue.getValueAt(selectedRow, 0);
+                //populateFoodRemoveCatalogue(item);
                 for(Restaurant restro:ecosystem.getRestaurantDirectory().getRestaurantDirectory()){
                     if(restro.getUserName().equals(account.getUsername())){
-                        ecosystem.getRestaurantDirectory().DeleteDishes(restro, menu);
+                        String fn= (String) tblMenuCatalogue.getValueAt(selectedRow, 0);
+                        String des= (String) tblMenuCatalogue.getValueAt(selectedRow, 1);
+                        String price= (String) tblMenuCatalogue.getValueAt(selectedRow, 2);
+                        Dishes d = ecosystem.getRestaurantDirectory().CheckDish(fn, des, price);
+                        ecosystem.getRestaurantDirectory().DeleteDishes(restro, d);
+                        populateFoodCatalogue();
                     }
                 }
-                populateFoodCatalogue();
+                
             }
         }else{
             JOptionPane.showMessageDialog(null, "Please select a row to proceed for deletion");

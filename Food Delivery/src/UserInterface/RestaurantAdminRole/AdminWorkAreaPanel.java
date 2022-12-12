@@ -5,6 +5,7 @@
 package UserInterface.RestaurantAdminRole;
 
 import Business.EcoSystem;
+import Business.Restaurant.Restaurant;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -21,6 +22,7 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     private EcoSystem ecosystem;
     private UserAccount account;
+    private Restaurant restaurant;
     public AdminWorkAreaPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -137,7 +139,7 @@ public class AdminWorkAreaPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManageOrderActionPerformed
 
     private void btnManageMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMenuActionPerformed
-        ManageMenu managemenuJPanel = new ManageMenu(userProcessContainer, account, ecosystem);
+        ManageMenu managemenuJPanel = new ManageMenu(userProcessContainer, account, ecosystem, restaurant);
         userProcessContainer.add("ManageMenu", managemenuJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

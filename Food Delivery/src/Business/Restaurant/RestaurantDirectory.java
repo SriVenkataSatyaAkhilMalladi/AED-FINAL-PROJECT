@@ -73,4 +73,13 @@ public class RestaurantDirectory {
         
     }
     
+    public Dishes CheckDish(String fname, String fdescription,String Price){
+        for(Dishes d : restaurant.getMenu()){
+            if (d.getName().equals(fname) && d.getDescription().equals(fdescription)&& d.getPrice().equals(Price)){
+                return d;
+            }
+        }
+        return null;
+    }
+    
 }
