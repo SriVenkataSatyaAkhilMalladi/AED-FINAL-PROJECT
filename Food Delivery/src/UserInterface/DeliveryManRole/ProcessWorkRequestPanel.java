@@ -111,6 +111,11 @@ public class ProcessWorkRequestPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
+
+        if(txtStatus.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please Enter the Status");
+            return;
+        }
         order.setStatus(txtStatus.getText());
         JOptionPane.showMessageDialog(null, "Status Updated Successfully");
     }//GEN-LAST:event_submitJButtonActionPerformed

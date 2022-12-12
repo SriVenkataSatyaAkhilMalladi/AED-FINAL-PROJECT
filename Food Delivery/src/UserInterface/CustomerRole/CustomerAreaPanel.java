@@ -156,6 +156,11 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
         tblPreviousOrders.setShowHorizontalLines(true);
         tblPreviousOrders.setShowVerticalLines(true);
         jScrollPane2.setViewportView(tblPreviousOrders);
+        if (tblPreviousOrders.getColumnModel().getColumnCount() > 0) {
+            tblPreviousOrders.getColumnModel().getColumn(0).setPreferredWidth(5);
+            tblPreviousOrders.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tblPreviousOrders.getColumnModel().getColumn(2).setPreferredWidth(5);
+        }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Previous Orders");
@@ -386,7 +391,7 @@ public class CustomerAreaPanel extends javax.swing.JPanel {
 
         populateRequestTable();
         populatePreviousOrderTable();
-        populateTable();
+        //populateTable();
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
     private void UpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatebtnActionPerformed
